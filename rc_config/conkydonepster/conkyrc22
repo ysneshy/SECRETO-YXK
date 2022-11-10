@@ -1,0 +1,112 @@
+ conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'middle_left',
+	gap_x = 400,
+	gap_y = 15,
+	minimum_width = 216, minimum_height = 0,
+	maximum_width = 216,
+
+	default_bar_width = 80, default_bar_height = 8,
+
+--########################
+-- - Graphics settings - #
+--########################
+	draw_shades = false,
+
+	default_color = '0093F0', -- azul
+
+	color0 = 'B0F900',   -- verde
+	color1 = 'FF720C',   --laranja
+	color2 = 'FF720C',    --grafico --azul com laranja
+
+
+}
+-- ${hwmon 0 temp 2}°C
+conky.text = [[
+#########################
+######INFORCACAO#########
+#########################
+${color B0F900}${goto 7}${voffset 02}${font conkycolorslogos:size=32}i${font}${goto 40}${voffset -35}${goto 50}${font FederationBold:size=16}${color B0F900}CPU : DELL
+${voffset -09}${font  sans-serif:bold:size=10}${goto 50}${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-26}
+${goto 50}${freq_g 1}GHz ${goto 145}${freq_g 2} GHz 
+#########################
+##CPU E RAM MEMORIA######
+#########################
+${color FF720C}${font sans-serif:bold:size=10}CPU ${hr 2}
+${color0}${goto 32}Atualizações: ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 360 equo search "~U" | wc -l | tail}${color}${font} ${color0}Pacotes${color}
+${font Liberation Sans:style=Bold:size=8}${voffset 4}${color0}${font ConkyColors:size=16}c${font}${offset -20}${voffset 6}${cpubar cpu0 4,17}${color}${voffset -16}${goto 32}CPU1: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu1}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu1 8,50 FF4141 0093F0}${color}
+${goto 32}CPU2: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu2}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu2 8,50 FF4141 0093F0}${color}
+${goto 32}CPU3: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu3}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 2' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu3 8,50 FF4141 0093F0}${color}
+${goto 32}CPU4: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu4}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 3' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu4 8,50 FF4141 0093F0}${color}
+# |--MEMoria ram ########
+${voffset 2}${color0}${font ConkyColors:size=15}g${font}${color}${goto 32}${voffset -7} RAM: ${font Liberation Sans:style=Bold:size=8}${color1}$memperc%${color}${font}
+${offset 1}${color0}${membar 4,17}${color}${goto 32} F: ${font Liberation Sans:style=Bold:size=8}${color2}${memeasyfree}${color}${font} U: ${font Liberation Sans:style=Bold:size=8}${color0}${mem} / ${memmax}${alignr}${memperc} %
+# |--SWAP
+${voffset 2}${color0}${font ConkyColors:size=15}z${font}${color}${voffset -8}${goto 32} SWAP: ${font Liberation Sans:style=Bold:size=8}${color1}${swapperc}%${color}${font}
+${voffset 2}${offset 1}${color0}${swapbar 4,17}${color}${voffset -2}${goto 32} F: ${font Liberation Sans:style=Bold:size=8}${color2}$swapmax${color}${font} U: ${font Liberation Sans:style=Bold:size=8}${color2}$swap${color}${font}
+# |--PROC
+${voffset 4}${color0}${font ConkyColors:size=16}C${font}${color}${goto 32}${voffset -05}Processos: ${color2}${alignr 63}${color}CPU${alignr}${color}RAM${color}
+${voffset -1}${goto 42}${color2}${top name 1}${color}${font Liberation Sans:style=Bold:size=8}${color1} ${goto 126}${top cpu 1}${alignr }${top mem 1}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 2}${color}${font Liberation Sans:style=Bold:size=8}${color1} ${goto 126}${top cpu 2}${alignr }${top mem 2}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 3}${color}${font Liberation Sans:style=Bold:size=8}${color1} ${goto 126}${top cpu 3}${alignr }${top mem 3}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 4}${color}${font Liberation Sans:style=Bold:size=8}${color1} ${goto 126}${top cpu 4}${alignr }${top mem 4}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 5}${color}${font Liberation Sans:style=Bold:size=8}${color1} ${goto 126}${top cpu 5}${alignr }${top mem 5}${color}${font}
+#################
+# - AREA DOHD - #
+#################
+${color FF720C}${font sans-serif:bold:size=10}AREA DO HD ${hr 2}${color B0F900}
+${color}${font}${execpi 30 /home/nepster/.conkycolors/bin/conkyHD1}
+#########################
+#######INTERNET WIFI#####
+#########################
+${color FF720C}${font sans-serif:bold:size=10}INTERNET ${hr 2}
+${if_up wlp6s0}
+${voffset -5}${color0}${font ConkyColors:size=15}s${font}${color 0093F0}${goto 32}${voffset -12}Up: ${font Liberation Sans:style=Bold:size=8}${color B0F900}${upspeed wlp6s0}${color 0093F0}${font} ${alignr}${color FF720C}${upspeedgraph wlp6s0 8,60 FF4141 0093F0}${color 0093F0}
+${goto 32}Total: ${font Liberation Sans:style=Bold:size=8}${color FF720C}${totalup wlp6s0}${color 0093F0}${font}
+${voffset 2}${color0}${font ConkyColors:size=15}t${font}${color 0093F0}${goto 32}${voffset -12}Down: ${font Liberation Sans:style=Bold:size=8}${color B0F900}${downspeed wlp6s0}${color 0093F0}${font} ${alignr}${color FF720C}${downspeedgraph wlp6s0 8,60 FF4141 0093F0}${color 0093F0}
+${goto 32}Total: ${font Liberation Sans:style=Bold:size=8}${color FF720C}${totaldown wlp6s0}${color 0093F0}${font}
+${color0}${font ConkyColors:size=15}j${font}${color 0093F0}${voffset -6}${goto 32}Sinal: ${font Liberation Sans:style=Bold:size=8}${color B0F900}${wireless_link_qual_perc wlp6s0}%${font} ${alignr}${color0}${wireless_link_bar 8,60 wlp6s0}${color 0093F0}
+${voffset 2}${color0}${font ConkyColors:size=15}B${font}${color 0093F0}${goto 32}${voffset -6}Ip local: ${alignr}${color0} 230.${addr wlp6s0}.8.9
+# |--enp7s0
+${color0}${font Liberation Sans:style=Bold:size=8}.${color1}$stippled_hr${font}
+${else}${if_up enp7s0}
+${voffset -5}${color0}${font ConkyColors:size=15}s${font}${color}${goto 32}${voffset -12}Up: {color B0F900}${font Liberation Sans:style=Bold:size=8}${color0}${upspeed enp7s0}${color}${font} ${alignr}${color2}${upspeedgraph enp7s0 8,60 FF4141 0093F0}${color}
+${goto 32}Total: ${font Liberation Sans:style=Bold:size=8}${color2}${totalup enp7s0}${color}${font}
+${voffset 4}${color0}${font ConkyColors:size=15}t${font}${color}${goto 32}${voffset -12}Down: ${font Liberation Sans:style=Bold:size=8}${color0}${downspeed enp7s0}${color}${font} ${alignr}${color2}${downspeedgraph enp7s0 8,60 FF4141 0093F0}${color}
+${goto 32}Total: ${font Liberation Sans:style=Bold:size=8}${color2}${totaldown enp7s0}${color}${font}
+${voffset 2}${color0}${font ConkyColors:size=15}B${font}${color}${goto 32}${voffset -6}Ip local: ${alignr}${color0}220.${addr enp7s0}.9.8${color}
+#########################
+]];

@@ -1,0 +1,245 @@
+conky.config = {
+own_window = true,
+own_window_type = 'override',
+own_window_transparent = true, --false,
+own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
+--  own_window_colour = '#000000',
+    own_window_class = 'Conky',
+--  own_window_title = 'fvirgola80 ACweather2',
+    own_window_argb_visual = true,
+    own_window_argb_value = 130,
+
+minimum_width = 100, minimum_height = 1080,  -- w|h
+maximum_width = 290,
+
+gap_x = 0, -- l|r
+gap_y = 0,  -- u|d
+
+alignment = 'top_left', --right',
+
+use_xft = true,
+update_interval = 1, --0.5
+xftalpha = 1,
+font = 'monofur:bold:size=10',
+override_utf8_locale = true,
+cpu_avg_samples = 2,
+net_avg_samples = 1,
+draw_shades = true,
+default_shade_color = '000000',
+draw_outline = false,
+default_outline_color = '000000',
+short_units = true,
+draw_graph_borders = false,
+default_color = '#ffffff',
+	color1 = '#ff0505',
+	color2 = '#05ff12',
+	color3 = '#787878',
+	color4 = '#ffffff',
+	color5 = '#FFDEAD',
+        color6 = '#00BFFF',
+
+border_inner_margin = 1,
+border_outer_margin = 1,
+
+background = true,
+use_spacer = 'none',
+no_buffers = true,
+imlib_cache_size = 0,
+double_buffer = true,
+text_buffer_size = 6144,
+max_user_text = 100000,
+
+
+
+
+
+};
+
+
+
+
+
+conky.text = [[
+${texeci 300 bash $HOME/Moongiant_conky_script/moongiant}\
+${texeci 300 bash $HOME/Accuweather_conky_script/accuweather -f2016}\
+${goto 8}↓↓↓↓↓${goto 253}↓↓↓↓↓${image $HOME/images/red_1.png -p 43,10 -s 207x1}
+${alignc}${color5}${time %T}${color} ${color6}←${color} ${nodename} ${color6}→${color} ${kernel} ${color6}←${color}
+${goto 8}${color5}${time %d %b %Y} Week ${time %V}${color} UP ${color6}→→→→${color} ${uptime} ${color6}←${color}
+${goto 8}↓↓↓↓↓${goto 253}↓↓↓↓↓${image $HOME/images/red_1.png -p 43,52 -s 207x1}
+${goto 8}${color6}C1: ${freq_g 1} G ${cpu cpu1}%${color}${goto 127}${color1}|${color}${cpugraph cpu1 12,150 000000 ff0000 -0.5 -l}
+${goto 8}${color5}C2: ${freq_g 2} G ${cpu cpu2}%${color}${goto 127}${color1}|${color}${cpugraph cpu2 12,150 000000 f2ff00 -0.5 -l}
+${goto 8}${color5}C3: ${freq_g 3} G ${cpu cpu3}%${color}${goto 127}${color1}|${color}${cpugraph cpu3 12,150 000000 00ff33 -0.5 -l}
+${goto 8}${color6}C4: ${freq_g 4} G ${cpu cpu4}%${color}${goto 127}${color1}|${color}${cpugraph cpu4 12,150 000000 ff8000 -0.5 -l}
+${goto 109}${voffset -39}${font monofur:bold:size=6}${color2}${execi 2 sensors | grep 'Core 0' | sed -e 's/.*  +//' | sed -e 's/.0°C.*//'}ºC${font}${color}
+${image $HOME/images/red_1.png -p 8,117 -s 275x1}
+${goto 8}${color5}${voffset 15}RAM ${memperc}%${color} ${color1}|${color} ${color5}FAN${color}${color2}${execi 1 sensors | grep 'fan1' | cut -c13-18 | sed '/^$/d'}${color}\
+${color6}Rpm${color} ${color1}|${color} ${color6}HDD ${color2}${acpitemp}°C${color} ${color6}${diskio}${color}
+${image $HOME/images/red_1.png -p 8,138 -s 275x1}
+${goto 8}${voffset -7}${color6}DISK ${fs_used /} ${fs_used_perc /}% / ${fs_size /home} ${fs_free_perc /}%${color}\
+${goto 185}${color1}|${color}${goto 194}${color5}SWAP ${swap}/${swapmax}${color}
+${image $HOME/images/red_1.png -p 8,159 -s 275x1}
+${goto 8}${voffset -7}${color5}↓↓ DN ↓↓ ${downspeed eth1}${color}${goto 127}${color1}|${color}
+${goto 8}${color6}↓↓ TDN ↓↓ ${totaldown eth1}${color}${goto 127}${color1}|${color}\
+${voffset -17}${downspeedgraph eth1 25,150 000000 7f8ed3 -0.5 -l}
+${voffset -9}${goto 8}${color5}↑↑ UP ↑↑ ${upspeed eth1}${color}${goto 127}${color1}|${color}
+${goto 8}${color6}↑↑ TUP ↑↑ ${totalup eth1}${color}${goto 127}${color1}|${color}\
+${upspeedgraph eth1 12,150 000000 ffcc00 -0.5 -l}
+
+${image $HOME/images/red_1.png -p 115,225 -s 169x1}
+${goto 8}${voffset -27}CURRENT WEATHER
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_0.png -p 8,235 -s 60x60}
+${goto 75}${voffset -15}${texeci 300 sed -n '4p' $HOME/Accuweather_conky_script/curr_cond|cut -c1-20}
+${goto 85}±${texeci 300 sed -n '3p' $HOME/Accuweather_conky_script/curr_cond}°\
+${goto 120}(${texeci 300 sed -n '2p' $HOME/Accuweather_conky_script/curr_cond}°)
+${image $HOME/Accuweather_conky_script/forecast_2016/wind_0.png -p 120,260 -s 35x35}
+${goto 160}${voffset -15}${texeci 300 sed -n '5p' $HOME/Accuweather_conky_script/curr_cond}
+${goto 160}${voffset -1}${texeci 300 sed -n '6p' $HOME/Accuweather_conky_script/curr_cond|awk '{print $1}'}\
+ ${texeci 300 sed -n '6p' $HOME/Accuweather_conky_script/curr_cond|awk '{print $2}'}
+${goto 160}${voffset 1}${texeci 300 sed -n '13p' $HOME/Accuweather_conky_script/hourly} Km/h
+${image $HOME/Moongiant_conky_script/0.png -p 220,235 -s 60x60}
+${goto 8}${voffset -10}${color3}HUMIDITY:${color}${goto 80}${texeci 300 sed -n '7p' $HOME/Accuweather_conky_script/curr_cond}\
+${goto 105}${color1}|${color}${goto 116}${color3}MOON:${color}${execpi 300 sed -n '7p' $HOME/Moongiant_conky_script/raw}${goto 264}${execpi 300 sed -n '1p' $HOME/Moongiant_conky_script/raw}
+${goto 8}${voffset 3}${color3}UV:${color}${goto 65}${texeci 300 sed -n '9p' $HOME/Accuweather_conky_script/curr_cond | cut -c-5}\
+${goto 105}${color1}|${color}${goto 116}${color3}PRESSURE:${color}${goto 208}${texeci 300 sed -n '8p' $HOME/Accuweather_conky_script/curr_cond}
+${goto 8}${voffset 3}${color3}DEW POINT:${color}${goto 80}${texeci 300 sed -n '12p' $HOME/Accuweather_conky_script/curr_cond}°\
+${goto 105}${color1}|${color}${goto 116}${color3}VISIBILITY:${color}${goto 248}${texeci 300 sed -n '13p' $HOME/Accuweather_conky_script/curr_cond}
+${goto 8}${voffset 3}${color3}CLOUD COV:${color}${goto 78}${texeci 300 sed -n '10p' $HOME/Accuweather_conky_script/curr_cond}${color}\
+${goto 105}${color1}|${color}${goto 116}${color3}CELLING:${color}${goto 241}${texeci 300 sed -n '32p' $HOME/Accuweather_conky_script/hourly}
+${goto 8}${voffset 3}${color3}RN:${color}${goto 32}${texeci 300 sed -n '24p' $HOME/Accuweather_conky_script/hourly} \
+${texeci 300 sed -n '7p' $HOME/Accuweather_conky_script/hourly}\
+${goto 105}${color1}|${color}${goto 116}${color3}SUN R/S:${color}${goto 208}${texeci 300 sed -n '23p' $HOME/Accuweather_conky_script/curr_cond}/\
+${texeci 300 sed -n '24p' $HOME/Accuweather_conky_script/curr_cond}
+${goto 8}${voffset 3}${color3}MOON R/S:${color} ${texeci 300 sed -n '25p' $HOME/Accuweather_conky_script/curr_cond}/\
+${texeci 300 sed -n '26p' $HOME/Accuweather_conky_script/curr_cond}${goto 157}${color1}|${color}\
+${goto 165}${color3}SD:${color}${texeci 300 sed -n '16p' $HOME/Accuweather_conky_script/curr_cond} \
+${color3}MD:${color}${texeci 300 sed -n '20p' $HOME/Accuweather_conky_script/curr_cond}
+${image $HOME/images/red_1.png -p 100,413 -s 184x1}
+${goto 8}${voffset -11}DAILY WEATHER
+${goto 25}${voffset 5}TIME CONDIT.${goto 120}${color1}|${color}${goto 145}FORECAST${goto 225}${color1}|${color}${goto 237}PRECIP.
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_1.png -p 45,443 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '1p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '4p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '2p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '5p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '6p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '6p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '7p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,482 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_2.png -p 45,487 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '8p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '11p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '9p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '12p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '13p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '13p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '14p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,526 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_3.png -p 45,531 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '15p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '18p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '16p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '19p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '20p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '20p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '21p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,570 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_4.png -p 45,575 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '22p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '25p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '23p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '26p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '27p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '27p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '28p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,615 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_5.png -p 45,620 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '29p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '32p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '30p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '33p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '34p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '34p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '35p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,660 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_6.png -p 45,665 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '36p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '39p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '37p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '40p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '41p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '41p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '42p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,705 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_7.png -p 45,710 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '43p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '46p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '44p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '47p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '48p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '48p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '49p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,750 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_8.png -p 45,755 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '50p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '53p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '51p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '54p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '55p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '55p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '56p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,795 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_9.png -p 45,801 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '57p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '60p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '58p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '61p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '62p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '62p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '63p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,840 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_10.png -p 45,846 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '64p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '67p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '65p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '68p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '69p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '69p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '70p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,885 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_11.png -p 45,891 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '71p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '74p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '72p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '75p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '76p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '76p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '77p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,930 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_12.png -p 45,936 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '78p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '81p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '79p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '82p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '83p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '83p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '84p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,975 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_13.png -p 45,981 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '85p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '88p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '86p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '89p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '90p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '90p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '91p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,1020 -s 275x1}
+${image $HOME/Accuweather_conky_script/forecast_2016/forecast_14.png -p 45,1026 -s 35x35}
+${goto 20}${voffset -8}${texeci 300 sed -n '92p' $HOME/Accuweather_conky_script/daily_forecast | cut -c-3 |tr a-z A-Z}\
+${goto 87}${texeci 300 sed -n '95p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 11}${voffset 5}${texeci 300 sed -n '93p' $HOME/Accuweather_conky_script/daily_forecast}\
+${goto 87}${texeci 300 sed -n '96p' $HOME/Accuweather_conky_script/daily_forecast}°
+${goto 130}${voffset -30}${font monofur:bold:size=8}${texeci 300 sed -n '97p' $HOME/Accuweather_conky_script/daily_forecast|cut -c1-17}
+${goto 130}${texeci 300 sed -n '97p' $HOME/Accuweather_conky_script/daily_forecast|cut -c18-34}${font}
+${goto 250}${voffset -20}${texeci 300 sed -n '98p' $HOME/Accuweather_conky_script/daily_forecast}
+${image $HOME/images/red_1.png -p 8,1065 -s 275x1}
+]];

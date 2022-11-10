@@ -1,0 +1,62 @@
+conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Tron:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'Conky',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_right',
+	gap_x = 1280,
+	gap_y = 15,
+	minimum_width = 216, minimum_height = 0,
+	maximum_width = 216,
+
+	default_bar_width = 60, default_bar_height = 8,
+
+--########################
+-- - Graphics settings - #
+--########################
+	draw_shades = false,
+
+	default_color = '#cccccc',
+
+	color0 = '56BFD2', --tron cor
+	color1 = '00D7FF',  --tron mais brilhante
+	color2 = 'white',
+
+
+};
+
+conky.text = [[
+${color0}${goto 10}${voffset 10}${offset -05}${font conkycolorslogos:size=22}g${font}${goto 35}${voffset -32}${color B0F900}${font Tron:size=08}
+${goto 34}${offset 00}${color1}Tron  ${font Tron:size=08}$sysname
+
+]];

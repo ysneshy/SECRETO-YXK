@@ -1,0 +1,122 @@
+conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'bottom_right',
+	gap_x = 4020,
+	gap_y = -600,
+	minimum_width = 188, minimum_height = 01,
+	maximum_width = 188,
+
+	stippled_borders = 115,
+	border_width = 1,
+
+	draw_shades = false, --true com relevo
+	draw_outline = false, -- true com relevo cinza
+	--draw_borders = true,
+	--draw_graph_borders = true,
+	--border_width = 1,
+
+-- Default colors and also border colors
+--default_color = 'cyan,
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+	default_bar_width = 80, default_bar_height = 8,
+
+	color1 = '778899',-- LightSlateGrey
+	color3 = 'D3D3D3',-- Lightgrey
+	color4 = '78BF39',-- Green
+	color6 = '8ED5E1',            -- '56BFD2',-- Turcos
+	color7 = '00D7FF',--azulclaro
+	color8 = 'ffa500',--Default
+	color9 = 'ffff00',--amarelo
+	color2 = 'ff0000',
+	color5 = '76b900',--nvidia
+	if_up_strictness = 'address',
+-- $stippled_hr$
+
+};
+conky.text = [[
+
+${color8}${voffset -12}${font conkycolors:size=16}d${color7}${font Liberation Sans:style=Bold:size=8}${voffset -7}${offset -25}${goto 32}Proc / Freq: ${color9}${alignr}${offset -05}${freq_g (1)} GHz
+${goto 6}${voffset 11}${color8}${font conkySymbols:size=16}h${font}${voffset -2}${goto 32}${font Liberation Sans:style=Bold:size=8}${color7}Proc / Temp: ${alignr}${offset -10}${color9}\
+${execi 30 sensors | grep 'Core ' | awk '{total += $3; count++} END {print total/count}' | sed 's/+//' | sed 's/\.0//g'} °C$color
+${goto 6}${voffset 5}${color8}${font conkycolors:size=16}l${font}${voffset -6}${goto 32}${color7}${font Liberation Sans:style=Bold:size=8}PROC: ${offset 6}${color9}${cpu}% ${alignr}${voffset -7}${offset -7}${color8}${cpugraph 20,85 FFFF00 00D7FF -t}
+${goto 32}${cpubar cpu1 8,34}  ${cpubar cpu2 8,34}  ${cpubar cpu3 8,34}  ${cpubar cpu4 8,34}
+${goto 32}${cpubar cpu5 8,34}  ${cpubar cpu6 8,34}  ${cpubar cpu7 8,34}  ${cpubar cpu8 8,34}
+${color7}$stippled_hr
+${if_match ${exec lsmod | grep 'nvidia' -c} > 0}\
+${goto 6}${voffset -2}${color5}${font conkycolorslogos:size=16}n${voffset -6}${goto 32}${font Liberation Sans:style=Bold:size=8}${exec nvidia-smi  --query-gpu=name --format=csv,noheader}${voffset -08}${color5}${goto 12}${voffset 02}${offset 155}${font Webdings:size=18}~${font Liberation Sans:style=Bold:size=8}
+${goto 6}${voffset 0}${color5}${font conkySymbols:size=16}n${font}${voffset -6}${goto 32}\
+${color7}${font Liberation Sans:style=Bold:size=8}NVidia SERIE:${alignr}${offset -10}${color9}$alignr ${execpi 3600 nvidia-smi --id=0 --query-gpu=driver_version --format=csv,noheader} Mhz
+${goto 6}${voffset 5}${color5}${font conkySymbols:size=16}f${font}${voffset -6}${goto 32}\
+${color7}${font Liberation Sans:style=Bold:size=8}NVidia GeForce GPU:${alignr}${offset -10}${color9}$alignr ${nvidia gpufreq} Mhz
+${goto 6}${voffset 5}${color5}${font conkySymbols:size=14}j${font}${voffset -6}${goto 32}\
+${color7}${font Liberation Sans:style=Bold:size=8}NVidia Memoria Freq:${alignr}${offset -10}${color9}$alignr ${nvidia memfreq} Mhz
+${goto 6}${voffset 5}${color5}${font conkySymbols:size=16}j${font}${voffset -6}${goto 32}\
+${color7}${font Liberation Sans:style=Bold:size=8}VRAM:${alignr}${offset -01}${color9}${exec nvidia-smi --query-gpu=memory.used --format=csv,noheader} / ${exec nvidia-smi --query-gpu=memory.total --format=csv,noheader}
+${goto 6}${voffset 5}${color5}${font conkySymbols:size=16}f${font}${voffset -6}${goto 32}\
+${color7}${font Liberation Sans:style=Bold:size=8}GPU:${alignr}${offset -10}${color9}${exec nvidia-settings -tq GPUUtilization | awk -F '[,= ]' '{ print $2 }'}%
+${goto 6}${voffset 6}${color5}${font conkySymbols:size=16}h${font}${voffset -6}${goto 32}\
+${font Liberation Sans:style=Bold:size=8}${color7}${offset -00}Temperatura: ${alignr}${offset -06}${color9}${exec nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits} °C$color
+${goto 6}${voffset 06}${color4}${font Webdings:size=16}~${font Liberation Sans:style=Bold:size=8}${font Liberation Sans:style=Bold:size=8}${voffset -02}${offset 06}${color7}GPU Power Draw: ${color9} ${offset 27}-${exec nvidia-smi | grep % | cut -c 21-23} W-
+${else}\
+${goto 6}${voffset 4}${font conkycolors:size=16}r${font}${voffset -6}${goto 32}OFF
+${endif}\
+${color7}$stippled_hr
+#${voffset 2}${color8}${font conkycolors:size=16}l${font}${voffset -6}${goto 32}${color7}${font Liberation Sans:style=Bold:size=8}I/O: ${offset 16}${color9}${diskio}${alignr}${color8}${diskiograph 8,60 FFFF00 00D7FF}
+#${voffset 6}${color8}${font conkySymbols:size=16}m${font} ${font Liberation Sans:style=Bold:size=8}${color7}${voffset -5} ${fs_used /} / ${color9}${fs_size /} ${color8}${alignr}${fs_bar 8,60 /}
+#${voffset 6}${color8}${font conkySymbols:size=16}m${font} ${font Liberation Sans:style=Bold:size=8}${color7}${voffset -5} ${fs_used /home} / ${color9}${fs_size /home} ${color8}${alignr}${fs_bar 8,60 /home}
+${if_up wlo1}\
+#${voffset 2}${color7}$stippled_hr
+${voffset 12}${color8}${font conkycolors:size=14}v${font Liberation Sans:style=Bold:size=8}${goto 32}${voffset -15}${color7}Up: ${offset 16}${color9}${upspeed wlo1}${font} ${alignr}${color8}${upspeedgraph wlo1 20,60 FFFF00 00D7FF}
+${goto 32}${voffset -13}${color7}${font Liberation Sans:style=Bold:size=8}Total:${color9}${offset 09}${totalup wlo1}
+${voffset 09}${color8}${font conkycolors:size=14}u${font Liberation Sans:style=Bold:size=8}${goto 32}${voffset -15}${color7}Down: ${color9}${offset 03}${downspeed wlo1}${font} ${alignr}${color8}${downspeedgraph wlo1 20,60 FFFF00 00D7FF}
+${goto 32}${voffset -15}${color7}${font Liberation Sans:style=Bold:size=8}Total:${color9}${offset 09}${totaldown wlo1}
+${voffset -6}${color8}${offset -02}
+${else}\
+${if_up wlo1}\
+${voffset 2} Wireless ${hr 1}
+${voffset 10}${font conkycolors:size=14}k${font}${goto 32}${voffset -12}SSID: ${wireless_essid wlo1}
+${goto 32}Signal: ${wireless_link_qual_perc wlo1}% ${alignr}${wireless_link_bar 8,60 wlo1}
+${voffset 15}${font conkycolors:size=14}x${font}${goto 32}${voffset -15}Up: ${color8}${upspeed wlo1}${font} ${alignr}${color8}${upspeedgraph wlo1 20,60 FFFF00 00D7FF}
+${goto 32}${voffset -15}Total: ${totalup wlo1}
+${voffset 15}${color8}${font conkycolors:size=14}w${font}${goto 32}${voffset -15}${color7}${color7}Down: ${downspeed wlo1}${font} ${alignr}${color9}${downspeedgraph wlo1 20,60 FFFF00 00D7FF}
+${goto 32}${voffset -15}${color7}Total:${color9} ${totaldown wlo1}
+${else}\
+${voffset 85}${color8}${font conkycolors:size=14}qwe${font}${goto 20}${color01}Sem Internet${color5}
+${endif}\
+${endif}\
+
+]];

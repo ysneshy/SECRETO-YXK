@@ -1,0 +1,70 @@
+conky.config = {
+
+	background = true,
+	use_xft = true,
+	font = 'monospace:pixelsize=9',
+	xftalpha = 0.8,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 0,
+	border_width = 0,
+	default_color = '8ED5E1', -- '#8ED5E1',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+	alignment = 'top_left',
+	gap_x = 830,
+	gap_y = 342,
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+    use_spacer = 'right',
+
+	maximum_width = 217,
+
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${offset 206}${alignr}$font  ───────  NET Information  ──────┐    
+${offset 206}${alignr}$font │    
+${offset 106}${alignr}$font < ${tcp_portmon 1 65535 count} > connections -─┤    
+${offset 201}${alignr}$font  │    
+${offset 106}${alignr}$font < ${tcp_portmon 1 32767 count} > in / locale -─┤    
+${offset 201}${alignr}$font  │    
+${offset 81}${alignr}$font Remote Host      Service │    
+${offset 166}${alignr}$font < ${tcp_portmon 1 32767 rhost 0} ${tcp_portmon 1 32767 lservice 0} > -─┤    │    
+${offset 166}${alignr}$font < ${tcp_portmon 1 32767 rhost 1} ${tcp_portmon 1 32767 lservice 1} > -─┤    │    
+${offset 166}${alignr}$font < ${tcp_portmon 1 32767 rhost 2} ${tcp_portmon 1 32767 lservice 2} > -─┘    │    
+${offset 201}${alignr}$font  │    
+${offset 101}${alignr}$font < ${tcp_portmon 32768 61000 count} > out / remote -─┤    
+${offset 201}${alignr}$font  │    
+${offset 21}${alignr}$font Remote Host          Protocol : HTTP │    
+${offset 151}${alignr}$font < ${tcp_portmon 32768 61000 rhost 0}     > -─┤    
+${offset 151}${alignr}$font < ${tcp_portmon 32768 61000 rhost 1}     > -─┤    
+${offset 151}${alignr}$font < ${tcp_portmon 32768 61000 rhost 2}     > -─┤    
+${offset 201}${alignr}$font  │    
+${offset 81}${alignr}$font < ${upspeed wlp6s0}   up >  WiFi -─┤    
+${offset 51}${alignr}$font < ${upspeedgraph wlp6s0 8,120 8b2132 fe8608} > -─┘     │    
+${offset 191}${alignr}$font    │    
+${offset 81}${alignr}$font < ${downspeed wlp6s0} down >  WiFi -─┤    
+${offset 51}${alignr}$font < ${downspeedgraph wlp6s0 8,120 8b2132 fe8608} > -─┘     │    
+${offset 201}${alignr}$font  │    
+${offset 191}${alignr}$font    │    
+${offset 201}${alignr}$font  │    
+${offset 81}${alignr}$font < ${upspeed enp7s0}   up >  Eth0 -─┤    
+${offset 51}${alignr}$font < ${upspeedgraph enp7s0 8,120 8b2132 fe8608} > -─┘     │    
+${offset 191}${alignr}$font    │    
+${offset 81}${alignr}$font < ${downspeed enp7s0} down >  Eth0 -─┘    
+${offset 51}${alignr}$font < ${downspeedgraph enp7s0 8,120 8b2132 fe8608} > -─┘          
+]];

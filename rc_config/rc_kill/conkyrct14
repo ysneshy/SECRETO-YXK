@@ -1,0 +1,65 @@
+conky.config = {
+
+	background = true,
+	use_xft = true,
+	font = 'monospace:pixel:bold:size=06',
+	xftalpha = 0.8,
+	update_interval = 4.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 200,
+	border_width = 5,
+	default_color = '8ED5E1', -- '#8ED5E1',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+	alignment = 'top_left',
+	gap_x = 555,
+	gap_y = 829,
+	no_buffers = true,
+    uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+    use_spacer = 'right',
+    color6 = '8ED5E1',
+	color7 = '00D7FF',
+	color5 = 'ffa500',--Default
+	color9 = 'ffff00',
+	color4 = 'ff0000',
+
+	maximum_width = 120,
+    maximum_width = 900,
+
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${color7}┌───────────────────┐
+${color7}│${color red} JOVEM-PAN ${blink  |NO AR|}${color7}${offset 00} ├──────${voffset -1}●
+${color7}├───────────────────┘${color4}
+${color7}├─${color4} ▼ 01 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 00}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 02 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 01}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 03 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 02}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 04 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 03}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 05 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 04}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 06 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 05}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 07 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 06}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 08 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 07}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 09 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 08}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 10 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 09}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 11 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 10}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 12 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 11}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 13 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 12}${color4}$stippled_hr${color7} ┤
+${color7}├─${color4} ▼ 14 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 13}${color4}$stippled_hr${color7} ┤
+${color7}└─${color4} ▼ 15 ${color6}${rss https://jovempan.com.br/feed/ 30 item_title 14}${color4}$stippled_hr${color7} ┤
+
+]];

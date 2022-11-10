@@ -1,0 +1,108 @@
+ conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_left',
+	gap_x = 0,
+	gap_y = 105,
+	minimum_width = 226, minimum_height = 700,
+	maximum_width = 226,
+	
+	stippled_borders = 115,
+	border_width = 1,
+	
+	draw_shades = false, --true com relevo
+	draw_outline = false, -- true com relevo cinza
+	--draw_borders = true,
+	--draw_graph_borders = true,
+	--border_width = 1,
+
+-- Default colors and also border colors
+	--default_color = 'cyan,
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+	default_bar_width = 80, default_bar_height = 8,
+
+	color1 = '778899',-- LightSlateGrey
+	color3 = 'D3D3D3',-- Lightgrey
+	color4 = '78BF39',-- Green
+	color6 = '8ED5E1',            -- '56BFD2',-- Turcos
+	color7 = '00D7FF',
+	color8 = 'ffa500',--Default
+	color9 = 'ffff00',
+	color2 = 'ff0000',
+	if_up_strictness = 'address',
+-- $stippled_hr$
+
+};
+
+conky.text = [[
+
+#############
+# - CPU - #
+#############
+${color7}${voffset 02}${color8}${font Mac Dingbats:style=bold:size=20}h${offset 02}${color7}${offset 00}${font TRON:bold:size=5}${voffset -15}CPU T:${goto 85}${color9}${offset 12}${font arial:bold:size=8}${exec sensors | grep -n 'temp2' | awk -F'+' '{print $2}' | awk -F' ' '{print $1}'}${offset 10}${color9}${freq}mhz
+${color7}${font TRON:size=5:bold}${offset 24}${voffset 02}CPU 0:${font Liberation Sans:style=Bold:size=8}${color9}${goto 65}${cpu cpu0}%${color7}${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${offset -09}${color9}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/.1.*//'}${color}${font}  ${color7}${cpugraph cpu0 8,50 FFFF00 00D7FF}${color}
+${color8}${voffset 01}${font Mac Dingbats:style=bold:size=20}h${offset 02}${color9}${font TRON:bold:size=5}${offset -01}${voffset -15}${color7}CPU 1:${font Liberation Sans:style=Bold:size=8}${color9}${goto 65}${cpu cpu1}%${font}${alignr}${font Liberation Sans:style=Bold:size=8}${color9}${offset -09}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/.1.*//'}${color}${font}  ${color7}${cpugraph cpu1 8,50 FFFF00 00D7FF}${color}
+${color7}${font TRON:bold:size=5}${offset 24}${voffset 00}CPU 2:${font Liberation Sans:style=Bold:size=8}${color9}${goto 65}${cpu cpu2}%${font}${alignr}${font Liberation Sans:style=Bold:size=8}${color9}${offset -09}${execi 30 sensors | grep 'Core 2' | awk '{print $3}' | sed 's/+//' | sed 's/.1.*//'}${color}${font}  ${color7}${cpugraph cpu2 8,50 FFFF00 00D7FF}${color}
+#########################
+# |--MEMoria ram ########
+#####################
+${voffset 2}${color8}${font ConkyColors:size=15}g${font}${color7}${goto 32}${font TRON:size=5:bold}${voffset -7}${offset -03}RAM :${font Liberation Sans:style=Bold:size=8}${color7}${offset 06}${color9}$memperc%${color7}${font}${offset 17}${offset 22}${offset -03}${font TRON:size=5:bold}${offset 02}F :${offset 12}${font Liberation Sans:style=Bold:size=8}${color7}${memeasyfree}${color}
+${offset 1}${color8}${membar 4,17}${offset 10}${font}${offset -04}${font TRON:size=5:bold}${color7}UTI :${offset 13}${font Liberation Sans:style=Bold:size=8}${color7}${mem} / ${memmax} =${offset 02}${color9}${memperc}%
+# |-ROOT/HOME
+${voffset 06}${color8}${font Mac Dingbats:style=bold:size=20}f${voffset -17}${offset -05}${font TRON:size=5:bold}${color7} root :${goto 75}$font${color7}${fs_used /} ${color9}/${color7} ${fs_size /}${voffset 13}${offset -128}${font TRON:size=05:bold}HD :/ ${offset 06}${color9}${fs_bar 7,82 /}${font} =${offset 04}${fs_used_perc /}%
+${voffset 05}${offset 01}${color8}${font Mac Dingbats:style=bold:size=20}f${offset -04}${voffset -14}${font TRON:size=5:bold}${color7} home :${goto 75}$font${color7}${fs_used /home} ${color9}/${color7} ${fs_size /home}${voffset 13}${offset -124}${font TRON:size=05:bold}HD :/ ${offset 03}${color9}${fs_bar 7,82 /}${font} =${offset 03}${fs_used_perc /}%
+${color7}${voffset -02}$stippled_hr
+# |--PROC
+${voffset -03}${color8}${offset -00}${font Science Icons:size=22}s${voffset 30}${goto 04}${offset -00}${color8}${font Poky:size=18}a${voffset 26}${color8}${offset -23}${font Science Icons:size=20}¡${font Tr2n:size=10:bold}${color9}${goto 32}${voffset -68}Proc :${alignr 63}${color9}${offset 07}CPU${alignr}${color9}${offset -40}RAM${color}${font Liberation Sans:style=regular:size=8}
+${voffset -1}${offset -04}${goto 32}${color7}${top name 1}${color}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 1}${alignr }${offset -12}${offset -32}${top mem 1}${color7}${font}
+${voffset -1}${offset -02}${goto 32}${color7}${top name 2}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 2}${alignr }${offset -02}${offset -42}${top mem 2}${color7}${font}
+${voffset -1}${offset -02}${goto 32}${color7}${top name 3}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 3}${alignr }${offset -44}${top mem 3}${color7}${font}
+${voffset -1}${offset 00}${goto 32}${color7}${top name 4}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 4}${alignr }${offset 00}${color7}${offset -44}${top mem 4}${color7}${font}
+${voffset -1}${offset 00}${goto 32}${color7}${top name 5}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${top cpu 5}${alignr }${offset -44}${top mem 5}${color}${font}
+${color9}${offset 27}${font Liberation Sans:style=Bold:size=8}Total Proc. $color9 ${offset 26}${processes}
+# |--WIFI/LOCAL IP
+${color8}${voffset 02}${font Mac Dingbats:style=bold:size=20}c${offset 02}${color7}${font TRON:bold:size=5}${offset 02}${voffset -16}WI - FI : ${goto 85}${color7}${font}${offset -10}194.${if_up wlo1}${addr wlo1}.8.9${else}${font Liberation Sans:bold:size=8}${offset 01}${voffset 00}${color2}${blink Sem Net ysneshy}${endif}
+${color7}${font TRON:bold:size=5}${offset 31}${voffset -02}LOCAL: ${goto 85}${color7}${font}${offset -10}194.${if_up wlo1}${addr wlo1}.8.8${else}${font Liberation Sans:bold:size=8}${offset 01}${voffset 00}${color2}${blink Sem Net Y}${endif}
+#JOGOS#
+${voffset 03}${color8}${offset 01}${font Mac Dingbats:style=bold:size=20}H$color7}${offset 02}${font TRON:bold:size=5} ${offset 44}${voffset -16}${goto 35}Jogos :${goto 74}${color9}${font}${offset 08}${execi 1 ls -1 /home/ysneshy/Downloads/ | wc -l} ${offset 00}${color9}Arquivos${color9}${voffset -02}${offset 10}${font Controllers:style=bold:size=26}V
+${offset 02}${font TRON:bold:size=5} ${offset 44}${voffset -38}${goto 35}${color7}Filmes: ${goto 75}${color9}${font}${offset 08}${execi 1 ls -1 /home/ysneshy/Vídeos | wc -l} ${offset 01}Videos
+${color7}$stippled_hr
+${color8}${voffset -02}${offset 01}${font Hall of Heroes:style=bold:size=10}c${voffset 04}${color7}${offset 02}${font Liberation Sans:bold:size=8} ${offset 44}${voffset -17}${goto 35}Em Construcao :
+${offset 44}${voffset -00}${goto 35}${color cyan}Adm ysneshy :${goto 114}${color9}${font}${offset 08}${execi 1 ls -1 /home/ysneshy/.777/ | wc -l} ${offset 02}${color9}Arquivos${color7}
+${color7}${offset 00}${voffset 02}${font sans-serif:style=Bold:size=08}${time %d %B %Y} ${font sans-serif:style=Bold:size=08} UP = $uptime
+${voffset -03}$stippled_hr 
+
+]];

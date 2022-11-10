@@ -1,0 +1,55 @@
+conky.config = {
+
+	background = true,
+	use_xft = true,
+	font = 'fira code:size=8',
+	xftalpha = 0.8,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 0,
+	border_width = 1,
+	default_color = 'gray', -- '#8ED5E1',
+	default_shade_color = 'red',
+	default_outline_color = 'green',
+	alignment = 'top_right',
+	gap_x = 520,
+	gap_y = 219,
+
+	stippled_borders = 50,
+	border_width = 1,
+
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+    use_spacer = 'none',
+    color5 = '76b900',--nvidia
+    color6 = '8ED5E1',
+	color7 = '00D7FF', --tron
+	color8 = 'ffa500',--Default
+	color9 = 'ffff00',
+    color1 = 'ff0000',
+
+minimum_height = 500,
+minimum_width = 256,
+maximum_width = 450,
+};
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${color7}┌────────────┐
+${color7}│${color8} CALENDARIO${color7} ├───────●
+${color7}└───┬────────┘
+#${execpi 60 cal_var=`date +%_d`; cal | sed s/"\(^\|[^0-9]\)$cal_var"'\b'/'\1${color7}'"$cal_var"'${color8}'/}
+${color9}${execpi 60 sh /home/$USER/.calendar.sh}
+
+]]

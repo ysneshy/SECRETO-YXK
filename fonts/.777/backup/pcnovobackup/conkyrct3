@@ -1,0 +1,64 @@
+conky.config = {
+
+
+	background = true,
+	use_xft = true,
+	font = 'sans:bold:size=08',
+
+	xftalpha = 0.8,
+
+	update_interval = 4.0,
+	total_run_times = 0,
+	own_window = true,
+
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_class = 'desktop',
+	own_window_colour = 'black',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	double_buffer = true,
+	minimum_width = 216, minimum_height = 0,
+  
+	draw_shades = true,
+	draw_outline = true,
+	draw_borders = true,
+	draw_graph_borders = true,
+
+-- Stippled borders?
+	stippled_borders = 06, --110
+-- border width
+	border_width = 1,
+
+	default_color = '8ED5E1',
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+--alignment top_left
+	alignment = 'bottom_right',
+--alignment bottom_left
+--alignment bottom_right
+--alignment none
+
+	gap_x = 180,
+	gap_y = 16,
+
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+
+	override_utf8_locale = true,
+	use_spacer = 'none',
+	
+	default_color = '8ED5E1',
+	color7 = 'cyan', --tron cor
+	color8 = '8ED5E1',  --tron mais brilhante
+	color2 = 'ffff00',
+	color8 = 'ffa500', -- color laranja
+
+};
+
+conky.text = [[
+${goto 10} ${color8}PC: ${color7}AORUS H370M GAMMING WIFI ${color8}SO: ${color7} MANJARO ${color8}${color7}${color8}|  Data: ${color7}${font sans:bold:size=08}${time %d/%m/%y}${color8}${font}  ${color8}Time: ${color7}${font sans:bold:size=08}${time %H:%M}${color8}${font}  |   Kernel: ${color7}${font sans:bold:size=08}$kernel${color8}${font}   Uptime: ${color7}${font sans:bold:size=08}${uptime_short}${color8}${font}  |   Swap: ${color7}${font sans:bold:size=08}10%${color8}${font}  | ${color8}${font}Hdd:${color7}${font sans:bold:size=08} ${fs_used_perc /}% ${fs_used /} / ${fs_size /}  |  ${color8}${font}Hdd Temp: ${color7}${font sans:bold:size=08}35°C${color8}${font}  |  Local ip: ${color7}${font sans:bold:size=08}59.93.15.115 ${color8}Email: ${color7}ysneshy@hotmail.com ${color8} Connecting:${color7}${font sans:bold:size=08}--=[LINUX]=--
+]];

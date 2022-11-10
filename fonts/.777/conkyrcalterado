@@ -1,0 +1,108 @@
+conky.config = {
+-- this file goes in ~
+
+--#####################
+-- - Conky settings - #
+--#####################
+	background = false,
+	use_xft = true,
+	font = 'monospace:pixelsize=11',
+	xftalpha = 1,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window_class = 'conky',
+	own_window = true,
+	own_window_type = 'desktop',
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	own_window_hints = 'below',
+	double_buffer = true,
+	minimum_width = 170, minimum_height = 5,
+	maximum_width = 190,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	default_color = 'cyan',--8EE5EE
+	default_shade_color = 'yellow',
+	default_outline_color = 'red',
+	alignment = 'top_left',
+	gap_x = 1620,     --1600
+	gap_y = 48,
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+	use_spacer = 'right',       --right
+
+	maximum_width = 350,
+
+--color1 red
+	color1 = 'yellow',
+	color2 = 'yellow',
+
+
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${alignr}${offset -60}${voffset -10}${font DejaVu Sans:pixelsize=25}${color FF720C}[YSNE${color 0093F0}SHY]${font}
+${alignr}${offset -108}▲
+${alignr}${offset -10}└─────────────┐
+${alignr}$font ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}${nodename}${color 0093F0}  ${alignr}${offset -17}-─┤
+${alignr}${offset 60}$font ${color 0093F0}${color 0093F0}[${alignr}${offset -07}${color 0093F0}${color 0093F0}${color B0F900}${exec uname -r | cut -c 1-14} ${color 0093F0}]${color FF720C} ${alignr}${offset -10}kernel${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}${offset 17}$font ${color 0093F0}[${color B0F900} $machine ${color 0093F0}]${color FF720C}  arch${color 0093F0} ${alignr}${offset -21}-─┤   ${alignr}${offset -17}│
+${alignr}${offset 17}$font ${color 0093F0}[${color B0F900} $uptime ${color 0093F0}]${color FF720C} uptime${color 0093F0} ${alignr}${offset -21}-─┘   ${alignr}${offset -17}│
+${alignr}${offset 17}$font ${color 0093F0}[${color B0F900} ${battery BAT0} ${color 0093F0}]${color FF720C} battery${color 0093F0} ${alignr}${offset -21}-─┘   ${alignr}${offset -17}│
+${alignr}$font ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}system  ${alignr}${offset -17}-${color 0093F0}─┤${color 0093F0}
+${alignr}$font ${color FF720C}cpu ${color 0093F0}-─┤     ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}${alignr}${offset -17}used${color 0093F0}${alignr}${offset -14}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${color FF720C}[${color B0F900}${alignr}${offset 02}${cpu 1}%${color FF720C}]${color 0093F0} CPU1 ${color FF720C}[${color 0093F0}${color B0F900}${alignr}${offset 10} ${cpu 2}%${color FF720C}]${color 0093F0} CPU2  ${alignr}${offset -13}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 25}$font ${color FF720C}[${color B0F900}${cpu 3}%${color FF720C}]${color 0093F0} CPU3 ${color FF720C}[${color 0093F0}${color FF720C}${alignr}${offset -17}${color B0F900}${cpu 4}%${color FF720C}]${color 0093F0} CPU4${alignr}${offset -15}-─┘  ${alignr}${offset -14}│    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}freq${color 0093F0}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 41}$font ${color 0093F0}[${color B0F900} ${alignr}${offset -17}${freq 1}mhz ${color 0093F0}]${color 0093F0} ${alignr}${offset -14}cpu1 ${alignr}${offset -14}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 28}$font ${color 0093F0}[${color B0F900} ${freq 2}mhz ${color 0093F0}]${color 0093F0} cpu2 -─┘    ${alignr}${offset -14}│    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 32}$font ${color 0093F0}[${color B0F900} $loadavg ${color 0093F0}]${color FF720C} load${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top name 1}  ${top cpu 1} ${color FF720C}]${color 0093F0}  ${alignr}${offset -14}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top name 2}  ${top cpu 2} ${color FF720C}]${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top name 3}  ${top cpu 3} ${color FF720C}]${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top name 4}  ${top cpu 4} ${color FF720C}]${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top name 5}  ${top cpu 5} ${color FF720C}]${color 0093F0} ${alignr}${offset -14}-─┘    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}processes${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}$font ${color 0093F0}[${color B0F900} $processes ${color 0093F0}]${color 0093F0}   ${color FF720C}total${color 0093F0} -─┤ ${alignr}${offset -21}│   ${alignr}${offset -17}│
+${alignr}${offset 42}${alignr}$font ${color 0093F0}[${color B0F900} $running_processes ${color 0093F0}]${color 0093F0} ${color FF720C}running${color 0093F0} ${alignr}${offset -14}-─┘    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}temperature${color 0093F0} ${alignr}${offset -14}-─┘    ${alignr}${offset -17}│
+${alignr}${offset 15}$font ${color 0093F0}[${color B0F900} ${exec sensors | grep -m 1 temp1 | cut -c 16-17} ${color 0093F0}]${color 0093F0} ${color FF720C}tmp1${color 0093F0} -─┘         ${alignr}${offset -17}│
+${alignr}${offset 29}${alignr}$font ${color 0093F0}[${color B0F900} ${if_match ${exec sensors | grep -m 1 temp1 | awk '{print $2}' | cut -c 2-3}>=65}${color B0F900}${exec sensors | grep -m 1 temp1 | awk '{print $2}' | cut -c 2-3}${else}${color B0F900}${exec sensors | grep -m 1 temp1 | awk '{print $2}' | cut -c 2-3}${endif}${color 0093F0}${color 0093F0} ${color 0093F0}]${color FF720C} tmp2${color 0093F0} -─┘         ${alignr}${offset -17}│
+${alignr}$font ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}resources ${color 0093F0} ${alignr}${offset -17}-─┤
+${alignr}${offset 53}$font ${color 0093F0}[${color B0F900} ${alignr}${offset -12}$diskio_read ${color 0093F0}]${color 0093F0}  ${color FF720C}${alignr}${offset -14}read${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}${offset 27}$font ${color 0093F0}[${color B0F900} $diskio_write ${color 0093F0}]${color 0093F0} ${color FF720C}write${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}ram${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}${offset 48}$font ${color 0093F0}[${color B0F900} $memperc% ${color 0093F0}]${color FF720C} used ${color 0093F0}${alignr}${offset -06}-─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 27}$font ${color 0093F0}[${color B0F900} $mem/$memmax ${color 0093F0}]${color 0093F0} -─┘    ${alignr}${offset -06}│    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top_mem name 1}  ${top_mem mem 1} ${color FF720C}]${color 0093F0} -─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top_mem name 2}  ${top_mem mem 2} ${color FF720C}]${color 0093F0} -─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top_mem name 3}  ${top_mem mem 3} ${color FF720C}]${color 0093F0} -─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top_mem name 4}  ${top_mem mem 4} ${color FF720C}]${color 0093F0} -─┤    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}[${color B0F900} ${top_mem name 5}  ${top_mem mem 5} ${color FF720C}]${color 0093F0} -─┘    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 21}$font ${color 0093F0}[${color B0F900} $swapperc% - $swap/$swapmax ${color 0093F0}]${color 0093F0} ${color FF720C}swap${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}${offset 24}$font ${color 0093F0}[${color 0093F0} ${swapbar 5,120} ${color 0093F0}]${color 0093F0} -─┘    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 26}$font ${color 0093F0}[${color B0F900} ${fs_used /}/${fs_size /} ${color 0093F0}]${color FF720C} root${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}${offset 24}$font ${color 0093F0}[${color 0093F0} ${fs_bar 5,120 /} ${color 0093F0}]${color 0093F0} -─┘    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 31}$font ${color 0093F0}[${color B0F900} ${fs_used /home}/${fs_size /home} ${color 0093F0}]${color 0093F0} ${color FF720C}home${color 0093F0} ${alignr}${offset -14}-─┤    ${alignr}${offset -17}│
+${alignr}${offset 24}$font ${color 0093F0}[${color 0093F0} ${fs_bar 5,120 /home/$USER/} ${color 0093F0}]${color 0093F0} -─┘    ${alignr}${offset -14}│    ${alignr}${offset -17}│
+${alignr}${offset 34}$font ${color 0093F0}[${color B0F900} ${fs_used /usr/local}/${fs_size /usr/local} ${color 0093F0}]${color 0093F0} ${color FF720C}local${color 0093F0} ${alignr}${offset -14}-─┘    ${alignr}${offset -17}│
+${alignr}${offset 24}$font ${color 0093F0}[${color 0093F0} ${fs_bar 5,120 /home/nepster/} ${color 0093F0}]${color 0093F0} ${alignr}${offset -14}-─┘         ${alignr}${offset -17}│
+${alignr}$font ${alignr}${offset -17}│
+${alignr}$font ${color FF720C}net ${color 0093F0} ${alignr}${offset -17}-─┘
+${alignr}${offset 38}$font ${color 0093F0}[${color B0F900} ${tcp_portmon 1 65535 count} ${color 0093F0}]${color FF720C} connections${color 0093F0} ${alignr}${offset -14}-─┤
+${alignr}${offset 38}$font ${color 0093F0}[${color B0F900} ${tcp_portmon 1 32767 count} ${color 0093F0}]${color FF720C} in / locale${color 0093F0} ${alignr}${offset -14}-─┤
+${alignr}${offset 38}$font ${color 0093F0}[${color B0F900} ${tcp_portmon 32768 61000 count} ${color 0093F0}]${color FF720C} out / remote${color 0093F0} ${alignr}${offset -14}-─┤
+${alignr}${offset 44}$font ${color 0093F0}[${color B0F900} ${upspeed wlp6s0} k/s ${color 0093F0}]${color 0093F0}   ${color FF720C}up${color 0093F0} ${alignr}${offset -14}-─┤
+${alignr}${offset 44}$font ${color 0093F0}${color 0093F0} ${upspeedgraph wlp6s0 8,120 FF720C FF720C} ${color 0093F0}${color 0093F0} -─┘    ${alignr}${offset -14}│
+${alignr}${offset 44}$font ${color 0093F0}[${color B0F900} ${downspeed wlp6s0} k/s ${color 0093F0}]${color 0093F0} ${color FF720C}down${color 0093F0} ${alignr}${offset -14}-─┘
+${alignr}${offset 30}$font ${color 0093F0}${color 0093F0} ${downspeedgraph wlp6s0 8,120 FF720C FF720C} ${color 0093F0}${color 0093F0} -─┘
+]];

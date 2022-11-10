@@ -1,0 +1,63 @@
+ conky.config = {
+
+	background = true,
+	use_xft = true,
+	font = 'monospace:bold:pixelsize=16',
+	xftalpha = 0.8,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 0,
+	--border_margin = '0',
+	border_width = 0,
+	default_color = '8ED5E1',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+	alignment = 'top_middle',
+	gap_x = 00,
+	gap_y = 660,
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+	use_spacer = 'none',
+	
+	color6 = '8ED5E1', --AZUL FRACO TAMBEM TRON
+	color7 = '00D7FF', --AZUL TRON
+	color8 = 'ffa500', --LARANJA
+	color9 = 'ffff00', --AMARELO
+
+	maximum_width = 350,
+
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+#${color7}${voffset -06}Tocando agora >>${hr}${color8}
+${alignr}${offset -152}${offset -04}${voffset -01}${color9}┌─────────${offset 75}<< Tocando Agora >>${offset 82}$font${color7}─────────┐
+${alignr}${color9}${offset -106}│${color8}${scroll 48 ${if_running audacious}${exec audtool current-song}$endif }
+${voffset -02}${offset -02}${color9}│${color8} Bitrate${color9}: ${exec audtool current-song-bitrate-kbps} kbps ${voffset -05}${offset 15}${font TRON:size=14}${offset 175}_${font monospace:bold:pixelsize=14}${voffset -14}
+${offset -02}${color9}│${color8} Duração${color9}: ${exec audtool current-song-length} min
+${offset -02}${color9}│${color8} Progresso${color9}: ${exec audtool current-song-output-length-seconds} segs
+${offset -02}${color9}│${color8} Total em Segundos${color9}: ${exec audtool current-song-length-seconds} segs
+${offset -02}${color9}│${color7}${scroll 48 ${if_running audacious}${exec audtool current-song}$endif }
+${alignr}${offset -242}${offset -14}${voffset 00}${color9}└─────────${offset 242}${offset 04}$font${color7}${goto 304}─────────┘
+#${voffset 02}${color7}Music Audacious >>${hr}${color7}
+${voffset -04}${color red}${if_running audacious}${else}${voffset 04}${alignc}${color7}${font DejaVu Sans Mono:bold:size=8}Não há músicas tocando agora.${endif}${voffset -8}${color white}${if_running vlc}${color7}
+${alignc}${font DejaVu Sans Mono:bold:size=7}${color9}${voffset 06}${blink VLC Esta em Execução Tron!}${endif}${color7}
+${voffset -8}${color white}${if_running smplayer}
+${alignc}${font DejaVu Sans Mono:bold:size=7}Mas parece que o SMPlayer está exibindo algo.${endif}${color7}
+${voffset -8}${color white}${if_running totem}
+${alignc}${font DejaVu Sans Mono:bold:size=7}Mas parece que o Totem está exibindo algo.
+${endif}
+
+]];

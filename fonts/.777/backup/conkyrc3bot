@@ -1,0 +1,93 @@
+conky.config = {
+
+-- the list of variables has been removed from this file in favour
+-- of keeping the documentation more maintainable.
+-- Check http://conky.sf.net for an up-to-date-list.
+	background = true,
+-- Use Xft?
+	use_xft = true,
+
+-- Xft font when Xft is enabled
+	font = 'sans:size=08',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Update interval in seconds
+	update_interval = 4.0,
+	total_run_times = 0,
+	own_window = true,
+
+-- Use pseudo transparency with own_window?
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_class = 'desktop',
+	own_window_colour = 'black',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	double_buffer = true,
+	minimum_width = 216, minimum_height = 0,
+  
+	draw_shades = true,
+	draw_outline = true,
+	draw_borders = true,
+	draw_graph_borders = true,
+
+-- Stippled borders?
+	stippled_borders = 110,
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = '8ED5E1',
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+-- Text alignment, other possible values are commented
+--alignment top_left
+	alignment = 'bottom_right',
+--alignment bottom_left
+--alignment bottom_right
+--alignment none
+
+-- Gap between borders of screen and text
+-- same thing as passing -x at command line
+	gap_x = 1280,
+	gap_y = 0,
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = false,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 2,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 2,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = true,
+
+
+-- Add spaces to keep things from moving about?  This only affects certain objects.\\
+	use_spacer = 'none',
+	
+	default_color = '8ED5E1',
+	color7 = 'cyan', --tron cor
+	color6 = '8ED5E1',  --tron mais brilhante
+	color2 = 'ffff00',
+
+--   mldonkey_hostname     Hostname for mldonkey stuff, defaults to localhost
+--   mldonkey_port         Mldonkey port, 4001 default
+--   mldonkey_login        Mldonkey login, default none
+--   mldonkey_password     Mldonkey password, default none
+-- Energia: ${color red}${acpiacadapter }
+};
+
+conky.text = [[
+${goto 10} ${color6}Notebook: ${color7}DELL ${color6}SO: ${color7} Sabayon 4.9.0 ${color6}${color7}${color6}|  Date: ${color7}${font sans:size=08}${time %d/%m/%y}${color6}${font}  ${color6}Time: ${color7}${font sans:size=08}${time %H:%M}${color6}${font}  |   Kernel: ${color7}${font sans:size=08}$kernel${color6}${font}   Uptime: ${color7}${font sans:size=08}${uptime_short}${color6}${font}  |   Swap: ${color7}${font sans:size=08}20%${color6}${font}  | ${color6}${font}Hdd:${color7}${font sans:size=08} ${fs_used_perc /}% ${fs_used /} / ${fs_size /}  |  ${color6}${font}Hdd Temp: ${color7}${font sans:size=08}35°C${color6}${font}  |  Local ip: ${color7}${font sans:size=08}59.93.15.115 ${color6} ${if_existing /proc/net/route wlp6s0}Trafego: ${color6}Up: ${color6} ${color7}${upspeed wlp6s0} kb/s${color6}  ${color6}Down: ${color6} ${color7}${downspeed wlp6s0} kb/s ${color FF720C}${color6}Total: ${color6} ${color7}${totaldown wlp6s0}${color6}${else}${if_existing /proc/net/route wlp6s0}${color7}${font sans:size=08}Up :${color6}${font} ${color7}${upspeed wlp6s0} kb/s${color6}  ${color7}${font sans:size=08}Down :${color6}${font} ${color7}${downspeed wlp6s0} kb/s${color6} ${color7}${font sans:size=08}{Total down :${color6}${font} ${color7}${totaldown wlp6s0}${color6}${endif}${else}${endif}${endif}
+]];

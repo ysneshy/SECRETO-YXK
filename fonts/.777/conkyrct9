@@ -1,0 +1,68 @@
+conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'bl',
+	gap_x = 3410,
+	gap_y = -400,
+	minimum_width = 70, minimum_height = 70,
+	maximum_width = 106,
+
+	default_bar_width = 80, default_bar_height = 8,
+
+--########################
+-- - Graphics settings - #
+--########################
+	draw_shades = false,
+
+	default_color = '#cccccc',
+
+	color1 = '#778899',-- LightSlateGrey
+	color3 = '#D3D3D3',-- Lightgrey
+	color4 = '#78BF39',-- Green
+	color6 = '#56BFD2',-- Turcos
+	color7 = '00D7FF',
+	color8 = 'ff0000',--Default
+	color9 = 'ffff00',
+	if_up_strictness = 'address',
+
+
+};
+
+conky.text = [[
+
+
+
+${color6}${voffset 01}${offset -05}${color9}${font Mac Dingbats:style=bold:size=16}t${font Tron:bold:size=5}${offset 02}${voffset -02}${color7}LIXO:${goto 25}${color7}${font Tron:size=06}${offset 32}${voffset -01}${color8}${execi 1 ls -1 /home/ysneshy/.local/share/Trash/files/ | wc -l} ${offset 02}Files
+]];

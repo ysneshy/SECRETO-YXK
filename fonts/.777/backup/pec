@@ -1,0 +1,149 @@
+ conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_left',
+	gap_x = 330,
+	gap_y = 105,
+	minimum_width = 226, minimum_height = 500,
+	maximum_width = 226,
+	
+	stippled_borders = 115,
+	border_width = 1,
+	
+	--draw_shades = true,
+	--draw_outline = true,
+	--draw_borders = true,
+	--draw_graph_borders = true,
+	--border_width = 1,
+
+-- Default colors and also border colors
+	--default_color = 'cyan,
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+	default_bar_width = 80, default_bar_height = 8,
+
+	color1 = '778899',-- LightSlateGrey
+	color3 = 'D3D3D3',-- Lightgrey
+	color4 = '78BF39',-- Green
+	color6 = '8ED5E1',            -- '56BFD2',-- Turcos
+	color7 = '00D7FF',
+	color8 = 'ffa500',--Default
+	color9 = 'ffff00',
+	color2 = 'ff0000',
+	if_up_strictness = 'address',
+-- $stippled_hr$
+
+};
+
+conky.text = [[
+
+${color #F95757}SISTEMA ${hr 1}$color
+${goto 6}${voffset 6}${image /usr/share/icons/logoalt_white.png -p 0,20 -s 26x26}${goto 40}
+${GOTO 40}${font ubuntu:size=14}${scroll 36 $machine $nodename - $sysname $kernel ${execi 99999 cat /etc/issue}${font bold:size=8}${color} | }
+${color #F95757}${hr 1}$color
+# processadores #
+${goto 6}${color #F9FF55}${font StyleBats:size=16}A${font}$color${voffset -4}${goto 32}CPU1: ${cpu cpu0}% ${alignr}${cpubar cpu0 8,60}
+${goto 6}${color #F9FF55}${voffset 4}${font StyleBats:size=16}A${font}$color${voffset -4}${goto 32}CPU2: ${cpu cpu1}% ${alignr}${cpubar cpu1 8,60}
+#${goto 6}${color #F9FF55}${voffset 4}${font StyleBats:size=16}A${font}color${voffset -4}${goto 32}CPU3: ${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
+#${goto 6}${color #F9FF55}${voffset 4}${font StyleBats:size=16}A${font}$color${voffset -4}${goto 32}CPU4: ${cpu cpu3}% ${alignr}${cpubar cpu3 8,60}
+# ram hd swap temperatura ####################
+${goto 6}${color #F9FF55}${voffset 4}${font StyleBats:size=16}g${font}$color${voffset -4}${goto 32}RAM: ${mem} ${alignr}${membar 8,60}
+${goto 6}${color #F9FF55}${voffset 4}${font StyleBats:size=16}x${font}$color${voffset -4}${goto 32}DISC: ${diskio}${alignr}${diskiograph 8,60 F57900 FCAF3E}
+${goto 6}${color #F9FF55}${voffset 4}${font StyleBats:size=16}j${font}$color${voffset -4}${goto 32}SWAP: $swapperc% ${alignr}${swapbar 8,60}
+${goto 6}${color #9FEAFF}${voffset 4}${font StyleBats:size=16}q${font}$color${voffset -4}${goto 32}Uptime: ${alignr}${uptime}
+${goto 6}${color #9FEAFF}${voffset 4}${font StyleBats:size=16}k${font}$color${voffset -4}${goto 32}Processos: ${alignr}$processes ($running_processes running)
+${goto 6}${voffset 4}${font StyleBats:size=16}j${font}${voffset -4}${goto 32}TempPc:${alignr}${execi 4 sensors | grep -A 0 'temp1' | cut -c15-18} ºC
+${goto 32}${voffset 1}${color #F95757}${hr 1}$color
+${goto 7.5}${color #9FEAFF}${voffset 4}${font Poky:size=15}a${font}${goto 32}$color${voffset -10}Highest: ${alignr 25}CPU${alignr}RAM
+${voffset -1}${goto 32}${top name 1} ${goto 124}${top cpu 1}${alignr }${top mem 1}
+${voffset -1}${goto 32}${top name 2} ${goto 124}${top cpu 2}${alignr }${top mem 2}
+${voffset -1}${goto 32}${top name 3} ${goto 124}${top cpu 3}${alignr }${top mem 3}
+${voffset -1}${goto 32}${top name 4} ${goto 124}${top cpu 4}${alignr }${top mem 4}
+${voffset -1}${color #F95757}DATA ${hr 1}$color
+${alignc 35}${color #FCAF3E}${font Arial Black:size=26}${time %H:%M}${font}$color
+${alignc 10}${color #68FF45}${font Arial:size=10}${time %A %d %B}${font}$color
+${voffset -1}${color #F95757}HD ${hr 1}$color
+#home do root, nodes #
+${goto 3}${voffset 4}${color #9FEAFF}${font Poky:size=16}H${font}$color${goto 29}${voffset -11} Root: ${fs_used_perc /}%${alignr}${fs_size /}
+${goto 29} Livre: ${fs_free /}${alignr}${fs_bar 8,60 /}
+#mede a partiçao criada por nodes2012#
+${goto 3}${voffset 8}${font Poky:size=16}H${font}${goto 29}${voffset -11} Backnilson: ${fs_used_perc /media/backnilson}%${alignr}${fs_size /media/backnilson}
+${goto 29} Livre: ${fs_free /media/backnilson}${alignr}${fs_bar 8,60 /media/backnilson}
+#mede a sua home - por nodes2012#
+#${goto 3}${voffset 8}${font Poky:size=16}H${font}${goto 29}${voffset -11} Home: ${fs_used_perc /home}%${alignr}${fs_size /home}
+#${goto 29} Livre: ${fs_free /home}${alignr}${fs_bar 8,60 /home}
+
+${voffset -1}${color #F95757}INTERNET ${hr 1}$color
+${if_up wlp6s0}${color #9FEAFF}${font Poky:size=14}Y${font}$color${goto 32}${voffset -5}REDE: ${wireless_essid wlp6s0}
+${goto 32}Sinal: ${wireless_link_qual wlp6s0}% ${alignr}${wireless_link_bar 8,60 wlp6s0}
+${voffset 6}${color #9FEAFF}${font VariShapes Solid:size=14}q${font}$color${goto 32}${voffset -}Up: ${upspeed wlp6s0}${font} ${alignr}${upspeedgraph wlp6s0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totalup wlp6s0}
+${voffset 4}${color #9FEAFF}${font VariShapes Solid:size=14}Q${font}$color${goto 32}${voffset -6}Down: ${downspeed wlp6s0}${font} ${alignr}${downspeedgraph wlp6s0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totaldown wlp6s0}
+${voffset 4}${color #9FEAFF}${font Poky:size=13}w${font}$color${goto 32}${voffset -8}Local IP: ${alignr}${addr wlp6s0}
+#${goto 32}Public IP: ${alignr}${execi 3600 wget -O - http://automation.whatismyip.com/n09230945.asp | tail}
+# |--ETH0
+${else}${if_up enp7s0}
+${voffset -13}${font VariShapes Solid:size=14}q${font}${goto 32}${voffset -6}Up: ${upspeed enp7s0}${font} ${alignr}${upspeedgraph enp7s0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totalup enp7s0}
+${voffset -2}${font VariShapes Solid:size=14}Q${font}${goto 32}${voffset -6}Down: ${downspeed enp7s0}${font} ${alignr}${downspeedgraph enp7s0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totaldown enp7s0}
+${voffset -2}${font Poky:size=13}w${font}${goto 32}${voffset -4}Local IP: ${alignr}${addr enp7s0}
+#${goto 32}Public IP: ${alignr}${execi 3600 wget -O - http://automation.whatismyip.com/n09230945.asp | tail}
+# |--PPP0
+${endif}${else}${if_up ppp0}
+${voffset -13}${font VariShapes Solid:size=14}q${font}${goto 32}${voffset -6}Up: ${upspeed ppp0}${font} ${alignr}${upspeedgraph ppp0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totalup ppp0}
+${voffset -2}${font VariShapes Solid:size=14}Q${font}${goto 32}${voffset -6}Down: ${downspeed ppp0}${font} ${alignr}${downspeedgraph ppp0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totaldown ppp0}
+${voffset -2}${font Poky:size=13}w${font}${goto 32}${voffset -4}Local IP: ${alignr}${addr ppp0}
+${endif}${else}${voffset 4}${font PizzaDude Bullets:size=12}4${font}${goto 32}Network Unavailable${endif}${endif}
+${color #F95757}Nodes.07/2012${hr 1} $color
+Blogger: pqplinuxnodes.blogspot.com.br
+Facebook: facebook.com/neomatrixfazao
+Email: neomatrixfazao@gmail.com
+Fone de contado: (91) 8025-5574
+
+ATALHOS DO TECLADO${hr}
+Alt+F1$alignr Menu principal
+Alt+F2$alignr Executar um programa
+Alt+Tab$alignr Alternar programa
+Ctrl+Alt+DEL$alignr Reiniciar
+Super+Space$alignr Gome-do
+Super+Tab$alignr Alternar programa
+Super+W$alignr Janelas
+Super+S$alignr Menu users
+
+]];

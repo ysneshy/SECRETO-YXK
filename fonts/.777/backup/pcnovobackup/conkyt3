@@ -1,0 +1,84 @@
+conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'right',
+	gap_x = 1280,
+	gap_y = 640,
+	minimum_width = 236, minimum_height = 0,
+	maximum_width = 236,
+
+	default_bar_width = 80, default_bar_height = 8,
+
+--########################
+-- - Graphics settings - #
+--########################
+	draw_shades = false,
+
+	default_color = '#cccccc',
+
+	color1 = '#778899',-- LightSlateGrey
+	color3 = '#D3D3D3',-- Lightgrey
+	color4 = '#78BF39',-- Green
+	color6 = '#56BFD2',-- Turcos
+	color7 = '00D7FF',
+	color8 = '54817C',--Default
+	color9 = 'ffff00',
+	if_up_strictness = 'address',
+
+
+};
+
+conky.text = [[
+
+# |--PROC
+${voffset 00}${color6}${offset -03}${font Symbolix:size=22}r${font Tr2n:size=10:bold}${color6}${goto 32}${voffset -05}Proc :${alignr 63}${color9}${offset 12}CPU${alignr}${color9}${offset -40}RAM${color}${font Liberation Sans:style=regular:size=8}
+${voffset -1}${offset -04}${goto 32}${color7}${top name 1}${color}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 1}${alignr }${offset -12}${offset -32}${top mem 1}${color7}${font}
+${voffset -1}${offset -02}${goto 32}${color7}${top name 2}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 2}${alignr }${offset -02}${offset -42}${top mem 2}${color7}${font}
+${voffset -1}${offset -02}${goto 32}${color7}${top name 3}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 3}${alignr }${offset -44}${top mem 3}${color7}${font}
+${voffset -1}${offset 00}${goto 32}${color7}${top name 4}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${color7}${top cpu 4}${alignr }${offset 00}${color7}${offset -44}${top mem 4}${color7}${font}
+${voffset -1}${offset 00}${goto 32}${color7}${top name 5}${color7}${font Liberation Sans:style=Bold:size=8}${color7} ${goto 126}${offset -14}${top cpu 5}${alignr }${offset -44}${top mem 5}${color}${font}
+#WIFI SINAL#
+${voffset -05}${offset 00}${color6}${font Mac Dingbats:style=bold:size=20}B${font}${color 0093F0}${voffset -6}${goto 32}${color6}${font Tron:style=Bold:size=5}${voffset -03}Sinal: ${font Liberation Sans:style=Bold:size=8}${color7}${offset 06}${wireless_link_qual_perc wlp6s0}${offset -6}%${font} ${alignr}${color7}${offset -44}${wireless_link_bar 8,50 wlp6s0}${color 0093F0}
+${voffset 00}${if_up wlp6s0}${color0}${color6}${voffset 01}${offset -02}${font Mac Dingbats:style=bold:size=20}x${font}${color6}${goto 32}${voffset -10}${font Tron:size=5:bold}Up:  ${offset 17}${font Liberation Sans:style=Bold:size=8}${color7}${upspeed wlp6s0}${font} ${alignr}${offset -44}${color7}${upspeedgraph wlp6s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color7}${totalup wlp6s0}${color 0093F0}${font}
+${voffset 2}${offset -02}${color6}${font Symbolix:style=bold:size=22}b${font}${color6}${goto 32}${font Tron:style=Bold:size=5}${voffset -12}Down :${offset 07}${font Liberation Sans:style=Bold:size=8}${color7}${downspeed wlp6s0}${color 0093F0}${font} ${alignr}${color7}${offset -44}${downspeedgraph wlp6s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color7}${totaldown wlp6s0}${color 0093F0}${font}
+#REDE LOCAL#
+${voffset -06}${if_up enp7s0}${color0}${color6}${offset -02}${voffset 02}${font Mac Dingbats:style=bold:size=20}x${font}${color6}${goto 32}${voffset -11}${font Tron:size=5:bold}Up:  ${offset 17}${font Liberation Sans:style=Bold:size=8}${color7}${upspeed enp7s0}${font} ${alignr}${offset -44}${color7}${upspeedgraph enp7s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color7}${totalup enp7s0}${color 0093F0}${font}
+${voffset 02}${offset -02}${color6}${font Symbolix:style=bold:size=22}p${font}${color6}${goto 32}${font Tron:style=Bold:size=5}${voffset -12}Down :${offset 07}${font Liberation Sans:style=Bold:size=8}${color7}${downspeed enp7s0}${color 0093F0}${font} ${alignr}${color7}${offset -44}${downspeedgraph enp7s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color7}${totaldown enp7s0}${color 0093F0}${font}
+${color6}${voffset 01}${color6}${font Mac Dingbats:style=bold:size=20}t${font Tron:bold:size=5} ${offset 44}${voffset -06}LIXO:${goto 25}${color7}${font}${offset 08}${execi 1 ls -1 /home/tron/.local/share/Trash/files/ | wc -l} ${offset 02}files${endif}
+]];

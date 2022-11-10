@@ -1,0 +1,106 @@
+conky.config = {
+
+-- the list of variables has been removed from this file in favour
+-- of keeping the documentation more maintainable.
+-- Check http://conky.sf.net for an up-to-date-list.
+	background = true,
+-- Use Xft?
+	use_xft = true,
+
+-- Xft font when Xft is enabled
+	font = 'Bitstream Vera Sans Mono:size=8',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Update interval in seconds
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+
+-- Use pseudo transparency with own_window?
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_class = 'desktop',
+	own_window_colour = 'black',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	double_buffer = true,
+	minimum_width = 226, minimum_height = 1032,
+    maximum_width = 186,
+	draw_shades = false,   --false sem relevo true com relevo
+	draw_outline = false,   --sem relevo true com relevo
+	draw_borders = true,
+	draw_graph_borders = true,
+
+-- Stippled borders?
+	stippled_borders = 110,
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = 'cyan',
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+-- Text alignment, other possible values are commented
+--alignment top_left
+	alignment = 'top_right',
+--alignment bottom_left
+--alignment bottom_right
+--alignment none
+
+-- Gap between borders of screen and text
+-- same thing as passing -x at command line
+	gap_x = 2280,
+	gap_y = 10,
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = false,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 2,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 2,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = true,
+
+
+-- Add spaces to keep things from moving about?  This only affects certain objects.\\
+	use_spacer = 'none',
+
+
+lua_load ~/home/ysneshy/.777/conky_rings.lua
+lua_draw_hook_pre conky_main_widgets
+
+color0 BDB696 #yellow
+color1 BD9696 #red
+color2 A496BD #purple
+color3 96BDAF #green
+color4 999999 #default
+
+};
+
+conky.text = [[
+
+${voffset 460}
+#${if_running clementine}${execp conkyClementine --template=~/.conky/conkyClementine.template}$endif
+#${if_running clementine}${font Terminus:size=12}${alignr}${offset -84}${color0}${execi 3 conkyClementine --datatype=TI}$endif
+#${if_running clementine}${font Fiery Turk:size=6}${alignr}${offset -84}${color4}${execi 3 conkyClementine --datatype=AR} - ${execi 3 conkyClementine --datatype=AL}$endif
+#${if_running clementine}${alignr}${offset -84}${voffset 2}${execi 3 conkyClementine --datatype=YR}$endif
+#${if_running clementine}${alignr}${offset -107}${voffset 17}${execi 2 conkyClementine --datatype=PT}/${execi 2 conkyClementine --datatype=LE}$endif
+#${if_running clementine}${alignr}${offset -45}${voffset -11}${color0}CLEMENTINE$endif
+#${if_running clementine}${else}${voffset 16}$endif
+${color1}${offset 383}${voffset 1}CPU ${color4}${acpitemp}°C   ${color1}GPU ${color4}${execi 30 nvidia-settings -query GPUCoreTemp | grep gpu:0 | cut -c45-46 }°C
+${color2}${offset 242}${voffset 12}UPTIME  ${color4}$uptime
+${alignr}${offset -1110}${voffset 12}${downspeedf wlo1}k ${color3}DOWN
+${offset 128}${voffset -11}UP ${color4}${upspeedf wlo1}k
+
+]];

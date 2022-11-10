@@ -1,0 +1,283 @@
+conky.config = {
+own_window = true,
+own_window_type = 'override',
+own_window_transparent = true, --false,
+own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
+--  own_window_colour = '#000000',
+    own_window_class = 'Conky',
+--  own_window_title = 'fvirgola80 ACweather3',
+    own_window_argb_visual = true,
+    own_window_argb_value = 130,
+
+   minimum_width = 100, minimum_height = 1080,  -- w|h
+   maximum_width = 380,
+
+gap_x = 0, -- l|r
+gap_y = 0,  -- u|d
+
+alignment = 'top_right', --left',
+
+use_xft = true,
+update_interval = 1, --0.5
+xftalpha = 1,
+font = 'monofur:bold:size=10',
+override_utf8_locale = true,
+draw_shades = true,
+default_shade_color = '000000',
+draw_outline = false,
+default_outline_color = '000000',
+draw_graph_borders = false,
+default_color = '#ffffff',
+	color1 = '#ff0505',
+	color2 = '#05ff12',
+	color3 = '#787878',
+	color4 = '#ffffff',
+	color5 = '#FFDEAD',
+        color6 = '#00BFFF',
+
+border_inner_margin = 1,
+border_outer_margin = 1,
+
+background = true,
+use_spacer = 'left',
+no_buffers = true,
+imlib_cache_size = 0,
+double_buffer = true,
+text_buffer_size = 6144,
+max_user_text = 100000,
+
+
+
+
+
+};
+
+
+conky.text = [[
+${texeci 300 bash $HOME/Accuweather_conky_script/accuweather -h2015 -h2016}
+${goto 8}HOURLY${image $HOME/images/red_1.png -p 50,21 -s 325x1}
+${goto 15}${voffset 5}TIME CONDITION${goto 120}${color1}|${color}${goto 145}FORECAST${goto 225}\
+${color1}|${color}${goto 237}TEMP${goto 270}${color1}|${color}\
+${goto 285}R.F.${goto 315}${color1}|${color}${goto 335}WIND
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_1.png -p 66,55 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '5p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '1p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '4p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '9p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '11p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '2p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '5p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,95 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_2.png -p 66,101 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '37p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '33p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '36p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '41p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '43p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '34p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '37p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,141 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_3.png -p 66,147 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '69p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '65p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '68p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '73p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '75p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '66p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '69p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,187 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_4.png -p 66,193 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '101p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '97p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '100p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '105p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '107p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '98p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '101p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,233 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_5.png -p 66,239 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '133p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '129p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '132p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '137p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '139p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '130p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '133p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,279 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_6.png -p 66,285 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '165p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '161p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '164p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '169p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '171p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '162p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '165p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,325 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_7.png -p 66,331 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '197p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '193p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '196p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '201p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '203p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '194p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '197p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,371 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_8.png -p 66,377 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '229p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '225p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '228p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '233p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '235p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '226p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '229p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,417 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_9.png -p 66,423 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '261p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '257p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '260p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '265p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '267p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '258p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '261p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,463 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_10.png -p 66,469 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '293p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '289p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '292p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '297p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '299p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '290p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '293p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,509 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_11.png -p 66,515 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '325p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '321p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '324p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '329p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '331p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '322p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '325p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,555 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_12.png -p 66,561 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '357p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '353p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '356p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '361p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '363p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '354p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '357p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,601 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_13.png -p 66,607 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '389p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '385p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '388p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '393p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '395p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '386p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '389p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,647 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_14.png -p 66,653 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '421p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '417p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '420p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '425p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '427p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '418p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '421p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,693 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_15.png -p 66,699 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '453p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '449p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '452p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '457p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '459p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '450p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '453p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,739 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_16.png -p 66,745 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '485p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '481p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '484p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '489p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '491p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '482p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '485p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,785 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_17.png -p 66,791 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '517p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '513p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '516p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '521p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '523p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '514p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '517p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,831 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_18.png -p 66,837 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '549p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '545p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '548p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '553p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '555p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '546p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '549p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,877 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_19.png -p 66,883 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '581p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '577p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '580p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '585p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '587p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '578p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '581p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,923 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_20.png -p 66,929 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '613p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '609p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '612p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '617p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '619p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '610p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '613p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,969 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_21.png -p 66,975 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '645p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '641p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '644p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '649p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '651p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '642p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '645p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,1015 -s 365x1}
+${image $HOME/Accuweather_conky_script/hourly_2016/hourly_22.png -p 66,1021 -s 35x35}\
+
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '677p' $HOME/Accuweather_conky_script/hourly|cut -c1-17}${font}\
+${goto 25}${texeci 300 sed -n '673p' $HOME/Accuweather_conky_script/hourly}\
+${goto 240}${texeci 300 sed -n '676p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 287}${texeci 300 sed -n '681p' $HOME/Accuweather_conky_script/hourly}°\
+${goto 330}${texeci 300 sed -n '683p' $HOME/Accuweather_conky_script/hourly}
+${goto 25}${texeci 300 sed -n '674p' $HOME/Accuweather_conky_script/hourly}\
+${goto 135}${font monofur:bold:size=8}${texeci 300 sed -n '677p' $HOME/Accuweather_conky_script/hourly|cut -c18-34}${font}\
+${image $HOME/images/red_1.png -p 8,1061 -s 365x1}
+]];
+

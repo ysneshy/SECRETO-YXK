@@ -1,0 +1,146 @@
+conky.config = {
+    alignment = 'top_left',
+    use_xft = true,
+    xftalpha = 0.8,
+    font = 'Noto:bold:size=8',
+    text_buffer_size = 2048,
+    update_interval = 1.0,
+    total_run_times = 0,
+    background = true,
+    double_buffer = true,
+    no_buffers = true,
+    imlib_cache_size = 0,
+    cpu_avg_samples = 2,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_argb_visual = true,
+    own_window_argb_value = 50,
+    own_window_transparent = true,
+    own_window_type = 'normal',
+    own_window_hints = 'undecorated,below,skip_taskbar,sticky,skip_pager',
+    own_window_colour = '000000',
+    draw_shades = no,
+    default_shade_color = '000000',
+    draw_outline = no,
+    default_outline_color = '000000',
+    draw_borders = no,
+    gap_x = 1880,
+    gap_y = 1,
+    minimum_width = 216, minimum_height = 700,
+	maximum_width = 216,
+
+	stippled_borders = 115,
+	border_width = 1,
+	draw_shades = false, --true com relevo
+	draw_outline = false, -- true com relevo cinza
+	--draw_borders = true,
+	--draw_graph_borders = true,
+	--border_width = 1,
+   -- Default colors and also border colors
+	--default_color = 'cyan,
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+	default_bar_width = 80, default_bar_height = 8,
+    color1 = '000000',-- LightSlateGrey
+	color3 = 'D3D3D3',-- Lightgrey
+	color4 = '78BF39',-- Green
+	color6 = '8ED5E1', -- '56BFD2',-- Turcos
+	color7 = '00D7FF',--azul forte
+	color8 = 'E54754',--Default
+	color9 = 'ffff00',-- amarelo
+	color2 = 'FEA400',--laranja
+	color5 = 'ffffff',--nem preciso falar a cor lammer
+	color0 = 'FF8308',-- laranja tambem
+    use_spacer = none,
+    hddtemp_host = "127.0.0.1",
+    hddtemp_port = "7634",
+}
+
+conky.text = [[
+#Processor section
+${color2}${hr}${color4}${color8}${goto 22}${voffset 12}${offset -16}${font ConkyColors:size=17}d${goto 74}${voffset -14}${offset -14}${color9}${font Noto:bold:size=7}${exec cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 18-30}${color4} @ ${color9}${freq_g 1}GHz${goto 200}${voffset 00}${offset -08}${font conkycolorslogos:size=20}i
+${font}${goto 52}${voffset -62}${offset -14}${color4}Active Governor: ${color9}${execi 1 cut -b 1-20 /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor}${color4}
+${goto 10}${color4}Current Vcore: ${color7}${execi 1 sensors | grep 'Vcore' | cut -c 27-35} ${alignr 06}${color4}Max Vcore: ${color2}${execi 1 sensors | grep 'Vcore' | cut -c 61-67}
+#
+#Cores
+${font Noto:bold:size=7}${goto 10}${color4}C1: ${color7}${cpu cpu1}%${goto 70}${color2}${exec sensors|grep 'Core 0'|awk '{print $3}'}${color4}${goto 140}C2: ${color7}${cpu cpu2}%${color2}${alignr 10}${exec sensors|grep 'Core 1'|awk '{print $3}'}
+${goto 10}${color2}${cpugraph cpu1 14,95 fc8c3b c6396b -t} ${alignr 10}${color2}${cpugraph cpu2 14,95 fc8c3b c6396b -t}
+${color4}${goto 10}C3: ${color7}${cpu cpu3}%${goto 70}${color2}${exec sensors|grep 'Core 2'|awk '{print $3}'}${color4}${goto 140}C4: ${color7}${cpu cpu4}%${alignr 10}${color2}${exec sensors|grep 'Core 3'|awk '{print $3}'}
+${goto 10}${color2}${cpugraph cpu3 14,95 fc8c3b c6396b -t} ${alignr 10}${color2}${cpugraph cpu4 14,95 fc8c3b c6396b -t}
+#
+#Thermal
+${color4}${goto 10}C1 Thermal: ${color7}${exec sensors|grep 'Core 0'|awk '{print $3}'}${goto 130}${color4}C2 Thermal: ${color7}${exec sensors|grep 'Core 1'|awk '{print $3}'}
+${color0}${goto 10}${execigraph 1 "sensors|grep 'Core 0'| cut -c 17-20" 14,95 83FF08 FF0883 -t} ${alignr 10}${execigraph 1 "sensors|grep 'Core 1'| cut -c 17-20" 14,95 83FF08 FF0883 -t}
+${color4}${goto 10}C3 Thermal: ${color7}${exec sensors|grep 'Core 2'|awk '{print $3}'}${goto 130}${color4}C4 Thermal: ${color7}${exec sensors|grep 'Core 3'|awk '{print $3}'}
+${color0}${goto 10}${execigraph 1 "sensors|grep 'Core 2'| cut -c 17-20" 14,95 83FF08 FF0883 -t} ${alignr 10}${execigraph 1 "sensors|grep 'Core 3'| cut -c 17-20" 14,95 83FF08 FF0883 -t}
+#${color4}${goto 10}Fan 1 Spd: ${color0}${exec sensors | grep 'fan1' | cut -c 14-21}${goto 160}${color4}Fan 2 Spd: ${color0}${exec sensors | grep 'fan2' | cut -c 14-21}
+#${color7}${goto 10}${execigraph 1 "sensors | grep 'fan1' | awk '{print $2}' | sed 's/$/\/5000/' | bc -l | sed 's/$/*100/' | bc | cut -d '.' -f1"  14,95 83FF08 FF0883 -t} ${alignr 10}${execigraph 1 "sensors | grep 'fan2' | awk '{print $2}' | sed 's/$/\/5000/' | bc -l | sed 's/$/*100/' | bc | cut -d '.' -f1" 14,95 83FF08 FF0883 -t}
+# top processes
+${color4}${goto 10}Current Avg CPU Load: ${alignr 10}${color9}${cpu cpu0}%
+${color2}${goto 10}${top name 1}${alignr 10}${color7}${top cpu 1}%
+${color2}${goto 10}${top name 2}${alignr 10}${color7}${top cpu 2}%
+${color2}${goto 10}${top name 3}${alignr 10}${color7}${top cpu 3}%
+${color2}${goto 10}${top name 4}${alignr 10}${color7}${top cpu 4}%
+# GPU Section
+${color2}${hr}
+# top memory
+${color4}
+${goto 00}${voffset -16}${offset 08}${color8}${font ConkyColors:size=17}g${font Noto:bold:size=7}${offset 02}${voffset -08}${color7}Memory Usage: ${alignr 10}${color7}${mem} - ${memperc}%
+#${goto 15}${color2}${memgraph 20,220 fc8c3b c6396b -t}
+${goto 10}${color0}${memgraph 14,95 83FF08 FF0883 -t}${alignr 10}${color0}${membar 14,95}
+${goto 10}${color2}${top_mem name 1}${alignr 10}${color7}${top mem 1}%
+${color2}${goto 10}${top_mem name 2}${alignr 10}${color7}${top mem 2}%
+${color2}${goto 10}${top_mem name 3}${alignr 10}${color7}${top mem 3}%
+${color2}${hr}
+##------------Card1-------------##
+${goto 22}${voffset -6}${offset -16}${color8}${font conkycolorslogos:size=20}n${color0}${alignc}${font Noto:bold:size=7}${goto 22}${voffset -10}${offset 12} ${color4}[ ${exec nvidia-smi -L | grep NVIDIA | cut -c 8-30}${color4} ]
+#
+${color0}${goto 10}${voffset 5}GPU Load: ${color7}${execi 1 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader}${alignr 10}${color0}GPU VRAM: ${color7}${execi 1 nvidia-smi --query-gpu=utilization.memory --format=csv,noheader}
+${color0}${goto 10}${execigraph 1 "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | cut -c 1-2" 14,95 83FF08 FF0883 -t }${alignr 10}${execigraph 1 "nvidia-smi --query-gpu=utilization.memory --format=csv,noheader | cut -c 1-2"  14,95 83FF08 FF0883 -t}
+${goto 10}${color0}GPU Spd: ${color7}${execi 1 nvidia-smi --query-gpu=clocks.sm --format=csv,noheader | cut -c 1-4}MHz${alignr 10}${color0}VRAM Spd: ${color7}${execi 1 nvidia-smi --query-gpu=clocks.mem --format=csv,noheader | cut -c 1-4}MHz
+${color0}${goto 10}${execigraph 1 "nvidia-smi --query-gpu=clocks.sm --format=csv,noheader | cut -d ' ' -f 1 | sed 's/$/\/1911/' | bc -l | sed 's/$/*100/' | bc | cut -d '.' -f1" 14,95 83FF08 FF0883 -t }${alignr 10}${execigraph 1 "nvidia-smi --query-gpu=clocks.mem --format=csv,noheader | cut -d ' ' -f 1 | sed 's/$/\/3504/' | bc -l | sed 's/$/*100/' | bc | cut -d '.' -f1"  14,95 83FF08 FF0883 -t}
+${color0}${alignc}GPU Temp: ${color7}${execi 1 "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader"}°C
+${color0}${goto 10}${execigraph 1 "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader" 14,95 83FF08 FF0883 -t} ${alignr 10}${color9}${execibar 1 14,95 "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader"}
+#${goto 10}Pwr: ${color9}${exec nvidia-settings -tq GPUUtilization | awk -F '[,= ]' '{ print $2 }'} W ${alignr 10}${color4}Max #Pwr: ${color2}${exec nvidia-settings -tq GPUUtilization | awk -F '[,= ]' '{ print $2 }'} W
+#
+#network
+${color2}${hr}${color4}
+${color7}${voffset -04}${offset 4}${color8}${font ConkyColors:size=17}j${font Noto:bold:size=7}${goto 14}${voffset -08}${offset 19}${color7}Internal IP: ${color7}${alignr 10}${color8}200.${addr eno2}.2
+${goto 10}${color9}Network${alignr 10 10}SSID: ${wireless_essid wlo1}
+${goto 10}${color8}Signal:${goto 108}${voffset 02}${color8}${wireless_link_bar wlo1}${color7}${color8}${alignr 10 10}${voffset -02}${wireless_link_qual_perc wlo1}%
+${font}${color7}${goto 10}External: ${font}${alignr 10 10}${exec curl ipinfo.io/ip}
+${font}${goto 10}${color0}Up Spd:   ${color7}${upspeed eno2}${goto 135}${color0}Down Spd: ${alignr 10}${color7}${downspeed eno2}
+${color0}${goto 10}Total Up: ${color7}${totalup eno2}${goto 140}${color0}Total Dn: ${alignr 10}${color7}${totaldown eno2}
+${goto 15}${voffset 04}${offset -05}${color2}${upspeedgraph eno2 14,95 fc8c3b c6396b -t}   ${offset 02}${color2}${downspeedgraph eno2 14,95 fc8c3b c6396b -t}
+#
+#${color7}${color2}${hr}${color4}Storage${color4}
+#${goto 10}${color4}Disk I/O Scheduler: ${color7}${alignr 10}${ioscheduler /dev/nvme0n1}
+#${goto 10}${color4}NVME Disk I/O:    ${goto 105}${color4}Read:${color7}${diskio_read nvme0n1}${goto 180}${color4}Write:${color7}${diskio_write nvme0n1}
+${voffset 0}${color8}${offset 1}${font ConkyColors:size=17}h${font}${goto 10}${voffset -08}${offset 19}${color4}Sistema:      ${alignr 10}${color9}${fs_used /}${color4}  /  ${color7}${alignr 10}${fs_size /}
+${goto 15}${color4}NVM Temp: ${goto 80}${color2}${alignr 10}${color2}Available:  ${color9}${fs_free_perc /}%
+#
+${goto 10}${color4}Home:      ${alignr 10}${color9}${fs_used /home}${color4}  /  ${color7}${alignr 10}${fs_size /home}
+${goto 15}${color4}SSD Temp: ${goto 80}${color2}${exec hddtemp /dev/sda2 | cut -c 33-37}${alignr 10}${color2}Available:  ${color9}${fs_free_perc /home}%
+#
+${goto 10}${color4}SSD Linux:      ${alignr 10}${color9}${fs_used /home/tron/HD}${color4}  /  ${color7}${alignr 10}${fs_size /home/tron/HD}
+${goto 15}${color4}SSD Temp: ${goto 80}${color2}${exec hddtemp /dev/sda1 | cut -c 33-37}${alignr 10}${color2}Available:  ${color9}${fs_free_perc /home/tron/HD}%
+#
+#${goto 10}${color4}Google Drive:      ${alignr 10}${color9}${fs_used /home/juddly/GDrive}${color4}  /  ${color7}${alignr 10}${fs_size /home/juddly/#GDrive}
+#${goto 15}${color4}${alignr 10}Available:  ${color9}${fs_free_perc /home/juddly/GDrive}%
+#
+${color2}${hr}${color4}
+#${color4}${alignc}${font Noto:bold:size=7}Storage - Network${font}
+#PASTAS
+# |-ROOT/HOME
+${voffset 06}${color8}${font Mac Dingbats:style=bold:size=20}f${voffset -17}${offset -05}${font TRON:size=05:bold}${color4}  root :${goto 75}${voffset -01}$font${color7} ${fs_used /} ${color9}/${color7} ${fs_size /}${voffset 13}${offset -132}${font TRON:size=05:bold}${color9}HD :/ ${offset 14}${color9}${voffset 01}${fs_bar 7,82 /}${font Liberation Sans:style=Bold:size=8} =${offset 02}${voffset -02}${fs_used_perc /}%
+${voffset 05}${offset 01}${color8}${font Mac Dingbats:style=bold:size=20}f${offset -04}${voffset -14}${font Noto:bold:size=7:bold}${color4}  HOME :${voffset -01}${goto 75}$font${color7} ${fs_used /home} ${color9}/${color7}  ${fs_size /home}${voffset 13}${offset -134}${color9}${font TRON:size=05:bold}HD :/ ${offset 12}${color9}${voffset 02}${fs_bar 7,82 /home}${font} =${offset 03}${font Liberation Sans:style=Bold:size=8}${voffset -02}${fs_used_perc /home}%
+${color3}${voffset 02}${color8}${font Mac Dingbats:style=bold:size=20}f${voffset -17}${offset -00}${font Noto:bold:size=7:bold}${color4}  Atividade /Root :${goto 75}$font${color4}
+${voffset -6}${offset 30}${font Noto:bold:size=7:bold}${color4} Leitura : ${color8}${diskio_read /dev/sda1}${goto 142}${color4} ${offset -14}Escrita : ${color8}${diskio_write /dev/sda1}
+${voffset 1}${offset 35}${color9}${diskiograph_read /dev/sda1  12,82 176e88 66FF00}${goto -60}${offset 10}${diskiograph_write /dev/sda1  12,82 176e88 66FF00}
+${voffset -04}${color8}${font Mac Dingbats:style=bold:size=20}f${voffset -14}${offset -05}${offset -04}${color4} ${font Noto:bold:size=7:bold}${color4} Atividade /home :
+${offset 34}Leitura : ${color8}${diskio_read /dev/sda2}${goto 122}${color4}${offset 08}Escrita : ${color8}${diskio_write /dev/sda2}
+${voffset 2}${offset 35}${color9}${diskiograph_read /dev/sda2 12,82 176e88 66FF00}${offset 10}${diskiograph_write /dev/sda2 12,82 176e88 66FF00}
+#${voffset 1}${color8}${font conkycolors:size=16}l${font}${voffset -6}${goto 32}${color4} ${font Liberation Sans:style=Bold:size=8}I/O: ${offset 16}${color9}${diskio}${offset -70}${alignr}${color8}${diskiograph 8,60 FFFF00 00D7FF}
+#$stippled_hr
+
+]]

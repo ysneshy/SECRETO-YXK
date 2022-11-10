@@ -1,0 +1,146 @@
+
+conky.config = {
+
+	background = true,
+	use_xft = true,
+	font = 'fira code:size=9',
+	xftalpha = 0.8,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 0,
+	border_width = 1,
+	default_color = 'gray', -- '#8ED5E1',
+	default_shade_color = 'red',
+	default_outline_color = 'green',
+	alignment = 'top_right',
+	gap_x = 1490,
+	gap_y = 30,
+
+	stippled_borders = 50,
+	border_width = 1,
+
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+    use_spacer = 'none',
+    color5 = '76b900',--nvidia
+    color6 = '8ED5E1',
+	color7 = '00D7FF', --tron
+	color8 = 'ffa500',--Default
+	color9 = 'ffff00',
+    color1 = 'ff0000',
+
+minimum_height = 500,
+minimum_width = 256,
+maximum_width = 450,
+};
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+#red,green,yellow,blue,magenta,cyan,black,white
+${voffset 04}${alignr}${color1}Ram${color8} ─────${voffset -1}●
+${alignr} │      
+${alignr} ${offset -45} ${color7}free${color8} ────── ${color7}used${color8} ────── ${color7}total${color8} ──┤
+${alignr}    ▼           ▼           ▼      │      
+${alignr} ${offset -45}${color9}$memeasyfree     ${color9}$mem     ${color9}$memmax${color8}  │
+${alignr} │      
+${alignr} ${offset -45}${color7}${membar 5,200} $memperc%${color8} ──┤
+${alignr} │      
+${alignr} ${offset -45}${color9}${top_mem name 1}           ${color9}${top_mem mem 1}${color8} ──┤
+${alignr} ${offset -45}${color7}${top_mem name 2}           ${color7}${top_mem mem 2}${color8} ──┤
+${alignr} ${offset -45}${color9}${top_mem name 3}           ${color9}${top_mem mem 3}${color8} ──┤
+${alignr} ${offset -45}${color7}${top_mem name 4}           ${color7}${top_mem mem 4}${color8} ──┤
+${alignr} ${offset -45}${color9}${top_mem name 5}           ${color9}${top_mem mem 5}${color8} ──┘
+${voffset -208}${alignr}${offset -75} ┌───────────────────────────────────
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} └──────────────────────────────────────────┐  
+${alignr} │  
+${alignr} ${offset -15}${color7}M.2${color9} ──┘
+${alignr} ${offset -45}${color9}│
+${alignr} ${offset -45}${color7}${color1}$fs_type ${color8}<<${color7} ${color8}root${color9} ──┤
+${alignr} ${offset -45}${color7}${fs_used_perc /}% ${color8}<<${color7} ${fs_used /} ${color8}/${color7} ${fs_size /}${color9} ──┘    │
+${alignr} │      
+${alignr} ${color7}${offset -45}${color1}$fs_type ${color8}<< ${color8}home${color9} ──┘
+${alignr} ${offset -82}${color7}${fs_used_perc /home}% ${color8}<<${color7} ${fs_used /home} ${color8}/${color7} ${fs_size /home}${color9} ──┘
+${voffset -112}${alignr} ${offset -75}${color9}┌───────────────────────────────────
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} └──────────────────────────────────────────┐  
+${alignr} │  
+${alignr} ${offset -15}${color9}Network ${color7}──┘
+${alignr} │      
+${alignr} ${offset -45}${color9}${execi 240 curl ifconfig.me/ip}${color7} <<${color8} ip${color7} ──┤
+${alignr} │      
+${alignr} ${offset -45}${color9}${wireless_link_qual wlo1}% ${color7}<<${color8} ${wireless_essid wlo1}${color7} ──┤
+${alignr} │      
+${alignr} ${offset -45}${color8}download${color7} ──┤
+${alignr} ${offset -45}${color9}${downspeedf eno2}${color7} ──┤    │
+${alignr} ${offset -45}${color9}${totaldown eno2}${color7} ──┤    │
+${alignr} ${offset -45}${color9}${downspeedgraph eno2 10,200 ffff00 ff0000}${color7} ──┘    │
+${alignr} │      
+${alignr} ${offset -45}${color8}upload${color7} ──┤
+${alignr} ${offset -45}${color9}${upspeedf eno2}${color7} ──┤
+${alignr} ${offset -45}${color9}${totalup eno2}${color7} ──┤
+${alignr} ${offset -45}${color9}${upspeedgraph eno2 10,200 ffff00 ff0000}${color7} ──┘
+${voffset -240}${alignr} ┌───────────────────────────────              
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} └──────────────────────────────────────────┐  
+${alignr} │  
+${alignr} ${offset -15}${color8}Weather ${color5}──┘
+${alignr} │      
+${alignr} ${offset -45}${execpi 300 curl wttr.in/belem-pa?format=%C} ${color7}<<${color9} Belém${color5} ──┤
+${alignr} ${offset -45}${color7}${execpi 300 curl wttr.in/belem-pa?format=%t+%h+%w}${color5} ──┘${color5}    │
+${alignr} │      
+${alignr} ${offset -45}${color5}${execpi 300 curl wttr.in/para?format=%C}${color7} << ${color9}Pará ${color5}──┘
+${alignr} ${offset -82}${color7}${execpi 300 curl wttr.in/para?format=%t+%h+%w}${color5} ──┘${color5}
+${voffset -112}${alignr} ┌───────────────────────────────              
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr} │                                             
+${alignr}${offset -15}└──────────────────────────────────────────●
+]];

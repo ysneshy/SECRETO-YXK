@@ -1,0 +1,111 @@
+    conky.config = {
+
+	background = true,
+	use_xft = true,
+	font = 'monospace:bold:pixelsize=16',
+	xftalpha = 0.8,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 0,
+	border_width = 1,
+	default_color = '8ED5E1', -- '#8ED5E1',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+	alignment = 'middle_middle',
+	gap_x = -600,
+	gap_y = 180,
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+    use_spacer = 'none',
+    color6 = '8ED5E1',
+	color7 = '00D7FF',
+	color8 = 'ffa500',--Default
+	color9 = 'ffff00',
+
+	maximum_width = 2350,
+
+
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${alignr}${voffset -24}${offset 03}${voffset 15}$font${color9} ┌──────────────────┌───${color9}─────────────────${color7}─┐
+${alignr}${offset 17}${color9}${font DejaVu Sans Mono:bold:pixelsize=20}│${font conkycolorslogos:size=08}a${color9}${font DejaVu Sans Mono:bold:pixelsize=21}${offset 02}${color8}MANJ${color7}ARO-${color9}LIN${color7}UX${offset 07}│
+${alignr}${offset 05}${voffset -05}$font${color9} └───${color9}─────────────────${color7}─┤
+${alignr}$font ${offset 13}${color9}${color7} ${color9} ${color7}    │  ${color8}
+${alignr}$font ${voffset -06}${offset 05}${color7}┌─${color8} 
+${alignr}$font ${offset 06}PC TRON ${color7}${offset -06}-─┤ ${color8}
+${alignr}$font ${color9}< ${color7}${kernel} ${color9}> kernel ${color7}-─┤    │  ${color8}
+${alignr}$font ${color9}< ${color7}$uptime ${color9}> uptime ${color7}-─┤    │  ${color8}
+${alignr}$font ${color9}< ${color7}$machine ${color9}>   arch ${color7}-─┘    │  ${color8}
+${alignr}$font ${color7}│  ${color8}
+${alignr}$font system ${color7}-─┤  ${color8}
+${alignr}$font ${color8}cpu ${color7}-─┤    │  ${color8}
+${alignr}$font used ${color7}-─┤    │    │  ${color8}
+${alignr}$font ${offset 05}${color9}< ${color7}${cpu 1}% ${color9}> cpu1 ${color7}-─┤    │    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}${cpu 2}% ${color9}> cpu2 ${color7}-─┘    │    │    │ ${color8} 
+${alignr}$font ${offset 00}${color9}< ${color7}${cpu 3}% ${color9}> cpu3 ${color7}-─┘    │    │    │ ${color8}
+${alignr}$font ${offset 00}${color9}< ${color7}${cpu 4}%${color9} > cpu4 ${color7}-─┘    │    │    │ ${color8}
+${alignr}$font       ${color7} │    │    │ ${color8} 
+${alignr}$font freq ${color7}-─┤    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}${freq 1} mhz ${color9}> cpu1 ${color7}-─┤    │    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}${freq 2} mhz ${color9}> cpu2 ${color7}-─┘    │    │    │ ${color8} 
+${alignr}$font      ${color7} │    │    │ ${color8} 
+${alignr}$font ${offset 20}${color9}< ${color7}$loadavg ${color9}> ${color8}load${color7} -─┤    │    │ ${color8} 
+${alignr}$font ${color7}│    │    │  ${color8}
+${alignr}$font PROCESS              $font CPU     ${color7} │    │    │  ${color8}
+${alignr}$font ${offset 05}${color9}< ${color7}${top name 1}  ${top cpu 1} ${color9}> ${color7}-─┤    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}${top name 2}  ${top cpu 2} ${color9}> ${color7}-─┤    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}${top name 3}  ${top cpu 3} ${color9}> ${color7}-─┤    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}${top name 4}  ${top cpu 4} ${color9}> ${color7}-─┤    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}<${color7} ${top name 5}  ${top cpu 5} ${color9}> ${color7}-─┘    │    │ ${color8} 
+${alignr}$font ${offset 05}${color7}│    │  ${color8}
+${alignr}$font processes ${color7}-─┤    │  ${color8}
+${alignr}$font ${offset 05}${color9}< ${color7}$processes ${color9}>   total ${color7}-─┤    │    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}$running_processes ${color9}> running ${color7}-─┘    │    │ ${color8} 
+${alignr}$font ${color7}│    │ ${color8} 
+${alignr}$font temperature ${color7}-─┘    │ ${color8} 
+${alignr}$font ${offset 05}${color9}< ${color7}${hwmon temp 1} ${color9}> tmp1 ${color7}-─┘         │ ${color8} 
+${alignr}$font ${offset 25}${color7}│  ${color8}  
+${alignr}$font resources ${color7}-─┘  ${color8}
+${alignr}$font ${offset 25}${color9}< ${color7}$diskio_read ${color9}>  read ${color7}-─┤ ${color8}      
+${alignr}$font ${offset 25}${color9}< ${color7}$diskio_write ${color9}> write ${color7}-─┤ ${color8}      
+${alignr}$font ${offset 15}${color8}ram ${color7}-─┤ ${color8}      
+${alignr}$font ${offset -30}${color9}< ${color7}$memperc% ${color9}> used ${color7}-─┤    │ ${color8}
+${alignr}$font ${offset -30}${color9}< ${color7}$mem/$memmax${color9} > ${color7}-─┘    │    │ ${color8}
+${alignr}$font ${offset 15}${color7}${color7}│    │ ${color8}      
+${alignr}$font ${offset -50}PROCESS   ${alignr}$font ${offset -30}$font RAM ${alignr}$font ${offset -30}${color7}│    │ ${color8}
+${alignr}$font ${color9}${offset -20}< ${color7}${top_mem name 1}  ${top_mem mem 1} ${color9}> ${color7}${offset 00}-─┤    │  ${color8}
+${alignr}$font ${color9}${offset -20}< ${color7}${top_mem name 2}  ${top_mem mem 2} ${color9}> ${color7}${offset 00}-─┤    │  ${color8}
+${alignr}$font ${offset -25}${color9}${offset 00}< ${color7}${top_mem name 3}  ${top_mem mem 3} ${color9}> ${color7}-─┤    │  ${color8}
+${alignr}$font ${color9}${offset -25}< ${color7}${top_mem name 4}  ${top_mem mem 4} ${color9}> ${color7}-─┤    │  ${color8}
+${alignr}$font ${color9}${offset -25}< ${color7}${top_mem name 5}  ${top_mem mem 5} ${color9}> ${color7}-─┘    │  ${color8}
+${alignr}$font ${offset 15}${color9}${color7}│${color8}       
+#${alignr}$font ${color8}${offset 25}< ${color7}$swapperc% - $swap/$swapmax ${color9}> swap ${color7}-─┤${color8}
+#${alignr}$font ${color9}${offset 10}< ${color7}${swapbar 5,120} ${color9}> ${color7}-─┘    │ ${color8}
+#${alignr}$font ${offset 15}${color7}${color7}│    │ ${color8}
+${alignr}$font ${offset 20}< ${color7}${fs_used /}/${fs_size /} ${color9}> root ${color7}-─┤${color8}       
+${alignr}$font ${color9}${offset -25}< ${color7}${fs_bar 5,120 /} ${color9}> ${color7}-─┘    │ ${color8}
+${alignr}$font ${offset 15}${color7}${color7}│    │ ${color8}      
+${alignr}$font ${offset 20}< ${color7}${fs_used /home}/${fs_size /home} ${color9}> home ${color7}-─┤ ${color8}      
+${alignr}$font ${color9}${offset -20}< ${color7}${fs_bar 5,120 /home/tron/} ${color9}> ${color7}-─┘    │  ${color8}
+${alignr}$font ${offset 10}${color7}│    │  ${color8}     
+${alignr}$font ${color8}${offset -30}< ${color7}${fs_used /home/tron/HD}/${fs_size /home/tron/HD} ${color9} >  ssd ${color7}-─┤ ${color8}
+${alignr}${offset -50}${color9}${offset 16}$font < ${color7}${fs_bar 5,120 /home/tron/HD} ${color9}> ${color7}-─┘ ${color8}${color7}${alignr}${offset -40}│
+${alignr}$font ${offset -25}${color7}│    │  ${color8}
+${alignr}$font ${color8}${offset -35}< ${color7}${fs_used /home/tron/window}/${fs_size /home/tron/window} ${color9} >  win ${color7}-─┘
+#${alignr}$font ${offset -25}${color7}│       ${color8}
+${alignr}${offset -50}${color9}${offset -05}$font < ${color7}${fs_bar 5,120 /home/tron/window} ${color9}> ${color7}-─┘ ${color8}
+]];

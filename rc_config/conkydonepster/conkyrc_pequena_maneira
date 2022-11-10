@@ -1,0 +1,78 @@
+conky.config = {
+--CONKYRC Personalizado
+	font = 'Sans:size=8',
+	background = true,
+	use_xft = true,
+	xftalpha = 0.9,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_colour = '#000000',
+	minimum_width = 220, minimum_height = 500,
+	double_buffer = true,
+	maximum_width = 200,
+	draw_shades = true,
+	draw_outline = false,
+	draw_borders = true,
+	draw_graph_borders = true,
+	default_color = 'green',
+	default_shade_color = 'black',
+	default_outline_color = 'green',
+	alignment = 'top_left',
+	gap_x = 300,
+	gap_y = 30,
+	no_buffers = true,
+	uppercase = false,-- set to yes if you want all text to be in uppercase
+	cpu_avg_samples = 2,
+	override_utf8_locale = false,
+};
+
+conky.text = [[
+ ${font sans-serif:normal:size=10} ${alignc} ${sysname} ${exec cat /etc/*version} ${font}
+ ${font sans-serif:normal:size=8} ${alignc} Area de Trabalho ${desktop} ${font}
+${color red}SISTEMA ${hr 1}${color}
+ Sistema Operacional: ${alignr} ${sysname} ${kernel} on ${machine} ${font}
+ Usuario: $alignr${USER}
+ Maquina: $alignr$nodename
+ Tempo Ativo: $alignr$uptime
+${color red}MEMORIA ${hr 1}${color}
+ Ram ${alignr}$mem / $memmax ($memperc%)
+ ${membar 4}
+${color red}PROCESSOS TOP ${hr 1}${color}
+ Highest CPU $alignr CPU% MEM%
+ ${top name 1}$alignr${top cpu 1}${top mem 1}
+ ${top name 2}$alignr${top cpu 2}${top mem 2}
+ ${top name 3}$alignr${top cpu 3}${top mem 3}
+Highest MEM $alignr CPU% MEM%
+ ${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+ ${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+ ${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+${color red}SISTEMA DE ARQUIVOS ${hr 1}${color}
+ / ${alignr}${fs_free /} / ${fs_size /} Livre(${fs_free_perc /}%)
+ ${fs_bar 4 /}
+ /home ${alignr}${fs_free /home} / ${fs_size /home} Livre(${fs_free_perc /home}%)
+ ${fs_bar 4 /home}
+ /opt ${alignr}${fs_free /opt} / ${fs_size /opt} Livre(${fs_free_perc /opt}%)
+ ${fs_bar 4 /opt}
+ /mnt/storage ${alignr}${fs_free /mnt/storage} / ${fs_size /mnt/storage} Livre(${fs_free_perc /mnt/storage}%)
+ ${fs_bar 4 /mnt/storage}
+ swap ${alignr}${swap} / ${swapmax} Usado(${swapperc}%)
+ ${swapbar 4}
+#/ ${alignr} /Home
+ #${diskiograph /dev/sda1 25,107} ${alignr}${diskiograph /dev/sda2 25,107}
+ #${diskio /dev/sda1} ${alignr}${diskio /dev/sda2}
+${color red}REDE ${hr 1}${color}
+ Eth0 ${alignr}IP:${addr eth0}
+ Down ${downspeed enp2s0} k/s ${alignr}Up ${upspeed enp2s0} k/s
+ ${downspeedgraph enp2s0 25,107} ${alignr}${upspeedgraph enp2s0 25,107}
+ Total ${totaldown enp2s0} ${alignr}Total ${totalup enp2s0}
+Wlan0 ${alignr}IP:${addr wlan0}
+ Down ${downspeed enp2s0} k/s ${alignr}Up ${upspeed enp2s0} k/s
+ ${downspeedgraph enp2s0 25,107} ${alignr}${upspeedgraph enp2s0 25,107}
+ Total ${totaldown enp2s0} ${alignr}Total ${totalup enp2s0}
+]];

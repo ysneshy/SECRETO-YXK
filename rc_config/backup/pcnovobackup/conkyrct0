@@ -1,0 +1,104 @@
+conky.config = {
+
+-- the list of variables has been removed from this file in favour
+-- of keeping the documentation more maintainable.
+-- Check http://conky.sf.net for an up-to-date-list.
+	background = true,
+-- Use Xft?
+	use_xft = true,
+
+-- Xft font when Xft is enabled
+	font = 'Bitstream Vera Sans Mono:size=8',
+
+-- Text alpha when using Xft
+	xftalpha = 0.8,
+
+-- Update interval in seconds
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+
+-- Use pseudo transparency with own_window?
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_class = 'desktop',
+	own_window_colour = 'black',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	double_buffer = true,
+	minimum_width = 226, minimum_height = 1032,
+    maximum_width = 186,
+	draw_shades = false,   --false sem relevo true com relevo
+	draw_outline = false,   --sem relevo true com relevo
+	draw_borders = true,
+	draw_graph_borders = true,
+
+-- Stippled borders?
+	stippled_borders = 110,
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors
+	default_color = 'cyan',
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+-- Text alignment, other possible values are commented
+--alignment top_left
+	alignment = 'top_right',
+--alignment bottom_left
+--alignment bottom_right
+--alignment none
+
+-- Gap between borders of screen and text
+-- same thing as passing -x at command line
+	gap_x = 2280,
+	gap_y = 10,
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = false,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 2,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 2,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = true,
+
+
+-- Add spaces to keep things from moving about?  This only affects certain objects.\\
+	use_spacer = 'none',
+	
+	
+	-- 56BFD2,
+	color6 = '8ED5E1', --tron cor
+	color7 = '00D7FF',  --tron mais brilhante
+	color2 = 'ffff00',
+	color9 = 'yellow',
+	color8 = 'ffa500', --laranja
+
+--   mldonkey_hostname     Hostname for mldonkey stuff, defaults to localhost
+--   mldonkey_port         Mldonkey port, 4001 default
+--   mldonkey_login        Mldonkey login, default none
+--   mldonkey_password     Mldonkey password, default none
+-- Energia: ${color red}${acpiacadapter }
+
+};
+
+conky.text = [[
+${voffset -10}${color7}
+${color8}${goto 12}${voffset -04}${offset -08}${font conkycolorslogos:size=20}a${font}${goto 35}${voffset -34}${color7}${font TR2N:bold:size=16}
+${goto 34}${offset 04}${color7}${font TR2N:bold:size=16}MANJARO${voffset -06}${goto 155}${color6}${font Science Icons:size=24}h${voffset 25}${goto 03}${color7}${offset 03}${font Science Icons:size=20}£
+${goto 14}${voffset -30}${offset 15}${color8}${font TR2N:bold:size=13}YSNESHY-${color7}${voffset -02}${offset 02}${font TR2N:bold:size=13}TRON${goto 193}${goto 13}${voffset 21}${offset -10}${color8}${font conkycolorslogos:size=19}i${color9}${offset 00}${voffset -15}${font sans-serif:style=Bold:size=08}${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-26}${offset -30}${voffset -10}${color7}${goto 45}
+${voffset 09}${color6}${font  sans-serif:bold:size=09}${goto 29}${freq_g 1}GHz ${goto 127}${freq_g 2} GHz 
+${color6}${voffset -05}$stippled_hr
+#${color FFFF00}${font conkycolorslogos:size=22}i
+
+]];

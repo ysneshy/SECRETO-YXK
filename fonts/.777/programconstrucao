@@ -1,0 +1,99 @@
+ conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_left',
+	gap_x = 0,
+	gap_y = 105,
+	minimum_width = 226, minimum_height = 500,
+	maximum_width = 226,
+	
+	stippled_borders = 115,
+	border_width = 1,
+	
+	--draw_shades = true,
+	--draw_outline = true,
+	--draw_borders = true,
+	--draw_graph_borders = true,
+	--border_width = 1,
+
+-- Default colors and also border colors
+	--default_color = 'cyan,
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+	default_bar_width = 80, default_bar_height = 8,
+
+	color1 = '778899',-- LightSlateGrey
+	color3 = 'D3D3D3',-- Lightgrey
+	color4 = '78BF39',-- Green
+	color6 = '8ED5E1',            -- '56BFD2',-- Turcos
+	color7 = '00D7FF',
+	color8 = 'ffa500',--Default
+	color9 = 'ffff00',
+	color2 = 'ff0000',
+	if_up_strictness = 'address',
+-- $stippled_hr$
+
+};
+
+conky.text = [[
+
+###UM TOCADOR MAIS COMPLETO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+${scroll 48 ${if_running audacious}${exec audtool --current-song} }
+Bitrate: ${exec audtool --current-song-bitrate-kbps} kbps
+Duração: ${exec audtool --current-song-length} min
+Progresso: ${exec audtool --current-song-output-length-seconds} segs
+Total em Segundos: ${exec audtool --current-song-length-seconds} segs
+
+####
+${exec cat ~/.777/X2}
+
+###TEMPERATURA DA PLACA DE VIDEO
+${alignc}Temp. AMD/RADEON:  ${execi 4 sensors | grep -v "(crit = +106.0°C)" | grep -m 2 'temp1' | cut -c15-17} ºC
+
+############# VLC PLAYER ######################
+${voffset -10}Tocando agora >>${hr}${color}
+${voffset 1}${color white}${if_running audacious}${scroll 48 ${exec audtool current-song} }
+ Duração: ${exec audtool current-song-length}min     Progresso: ${exec audtool current-song-output-length-seconds}segs${else}${voffset 10}${alignc}${font DejaVu Sans Mono:size=8}Não há músicas tocando agora.${endif}
+${voffset -8}${color white}${if_running vlc}
+ ${alignc}${font DejaVu Sans Mono:size=7}Mas parece que o VLC está exibindo algo.
+${endif}
+${voffset -8}${color white}${if_running smplayer}
+ ${alignc}${font DejaVu Sans Mono:size=7}Mas parece que o SMPlayer está exibindo algo.
+${endif}
+${voffset -8}${color white}${if_running totem}
+ ${alignc}${font DejaVu Sans Mono:size=7}Mas parece que o Totem está exibindo algo.
+${endif}
+
+]];

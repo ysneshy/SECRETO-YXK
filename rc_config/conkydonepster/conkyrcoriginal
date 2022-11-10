@@ -1,0 +1,126 @@
+ -- vim: ts=4 sw=4 noet ai cindent syntax=lua
+
+conky.config = {
+	-- Use double buffering (eliminates flickering)
+	double_buffer = true,
+
+	-- Run conky in the background
+	background = true,
+  
+	-- Update interval in seconds
+	update_interval = 2.0,
+
+	-- Set to zero to run forever
+	total_run_times = 0,
+
+	-- Subtract file system buffers from used memory
+	no_buffers = true,
+
+	-- Number of samples to take for CPU and network readings
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+
+	-- Use Xft (anti-aliased font and stuff)
+	use_xft = true,
+	font = 'Terminus:size=10',
+	xftalpha = 0.8,
+	uppercase = false,
+  
+	-- Prevent text from moving around while using a mono font
+	use_spacer = 'left',
+  
+	-- Default color and border settings
+	default_color = 'cyan',
+	draw_shades = false, --true
+	draw_outline = false, --true
+	draw_borders = false,
+	color0 = 'white',
+	color1 = 'E07A1F',
+	color2 = 'white',
+
+	-- Makes conky window transparent
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_argb_visual = true,
+	own_window_argb_value = 127,
+	own_window_transparent = true, --false
+	own_window_type = 'normal',
+	own_window_hints = 'undecorated,below,skip_taskbar,sticky,skip_pager',
+  
+	-- Window size and position
+	minimum_width = 216,
+	minimum_height = 690,
+	maximum_width = 216,
+	alignment = 'top_left',
+	gap_y = 145
+}
+-- ${hwmon 0 temp 2}°C
+conky.text = [[
+#########################
+######INFORCACAO#########
+#########################
+${color FF720C}${font sans-serif:bold:size=10}INFORMACAO ${hr 2}
+${color B0F900}${goto 7}${voffset 05}${font conkycolorslogos:size=32}i${font}${goto 40}${voffset -35}${goto 50}${font FederationBold:size=16}${color B0F900}CPU : DELL
+${voffset -09}${font  sans-serif:bold:size=10}${goto 50}${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-26}
+${goto 50}${freq_g 1}GHz ${goto 145}${freq_g 2} GHz 
+#########################
+######LOAD###############
+#########################
+${color FF720C}${font sans-serif:bold:size=10}LOAD ${hr 2}
+${font Liberation Sans:style=Bold:size=8}${voffset 4}${color0}${font ConkyColors:size=16}c${font}${offset -20}${voffset 6}${cpubar cpu0 4,17}${color}${voffset -16}${goto 32}CPU1: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu1}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu1 8,50 FF4141 DC0000}${color}
+${goto 32}CPU2: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu2}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu2 8,50 FF4141 DC0000}${color}
+${goto 32}CPU3: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu3}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 2' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu3 8,50 FF4141 DC0000}${color}
+${goto 32}CPU4: ${font Liberation Sans:style=Bold:size=8}${color1}${cpu cpu4}%${font} ${alignr}${font Liberation Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 3' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}  ${color2}${cpugraph cpu4 8,50 FF4141 DC0000}${color}
+${color FF720C}${font sans-serif:bold:size=10}RAM ${hr 2}${color B0F900}
+${font}${mem} / ${memmax}${alignr}${memperc} %
+${color B0F900}$membar
+#########################
+#####HS SISTEMA##########
+#########################
+${color FF720C}${font sans-serif:bold:size=10}HD SISTEMA ${hr 2}${color B0F900}
+${font}${fs_used /} / ${fs_size /}${alignr}${color FF720C}${fs_used_perc} %
+${color B0F900}${fs_bar /}
+${color FF720C}/${color B0F900} ${alignr}${fs_free /} / ${fs_size /} Livre${color FF720C}(${fs_free_perc /}%)${color B0F900}
+ ${fs_bar 4 /}
+ ${color FF720C}/home${color B0F900} ${alignr}${fs_free /home} / ${fs_size /home} Livre${color FF720C}(${fs_free_perc /home}%)${color B0F900}
+ ${fs_bar 4 /home}
+ ${color FF720C}/opt${color B0F900} ${alignr}${fs_free /opt} / ${fs_size /opt} Livre${color FF720C}(${fs_free_perc /opt}%)${color B0F900}
+ ${fs_bar 4 /opt}
+#########################
+########SENSORES#########
+#########################
+${color FF720C}${font sans-serif:bold:size=10}SENSORES ${hr 2}${color B0F900}
+${font}chipset${alignr}${hwmon 1 temp 1}°C
+video${alignr}${execi 60 nvidia-settings -q ThermalSensorReading -t}°C
+cpu fan${alignr}${hwmon 1 fan 1} RPM
+intake${alignr}${hwmon 1 fan 3} RPM
+exhaust${alignr}${hwmon 1 fan 4} RPM
+${color FF720C}${font sans-serif:bold:size=10}INTERNET ${hr 2}
+#########################
+#######INTERNET WIFI#####
+#########################
+${if_up wlp6s0}
+${voffset -5}${color FF720C}${font ConkyColors:size=15}s${font}${color 0093F0}${goto 32}${voffset -12}Up: ${font Liberation Sans:style=Bold:size=8}${color B0F900}${upspeed wlp6s0}${color 0093F0}${font} ${alignr}${color FF720C}${upspeedgraph wlp6s0 8,60 FF4141 0093F0}${color 0093F0}
+${goto 32}Total: ${font Liberation Sans:style=Bold:size=8}${color FF720C}${totalup wlp6s0}${color 0093F0}${font}
+${voffset 2}${color FF720C}${font ConkyColors:size=15}t${font}${color 0093F0}${goto 32}${voffset -12}Down: ${font Liberation Sans:style=Bold:size=8}${color B0F900}${downspeed wlp6s0}${color 0093F0}${font} ${alignr}${color FF720C}${downspeedgraph wlp6s0 8,60 FF4141 0093F0}${color 0093F0}
+${goto 32}Total: ${font Liberation Sans:style=Bold:size=8}${color FF720C}${totaldown wlp6s0}${color 0093F0}${font}
+${color FF720C}${font ConkyColors:size=15}j${font}${color 0093F0}${voffset -6}${goto 32}Sinal: ${font Liberation Sans:style=Bold:size=8}${color B0F900}${wireless_link_qual_perc wlp6s0}%${color 0093F0}${font} ${alignr}${color FF720C}${wireless_link_bar 8,60 wlp6s0}${color 0093F0}
+${voffset 2}${color FF720C}${font ConkyColors:size=15}B${font}${color 0093F0}${goto 32}${voffset -6}Ip local: ${alignr}${color FF720C}${addr wlp6s0}${color 0093F0}
+${font}${color B0F900}Network Interface${alignr}${font Verana:size=8}${color FF720C}wlp6s0
+#########################
+######TOP CPU############
+#########################
+${color FF720C}${font sans-serif:bold:size=10}TOP CPU ${hr 2}${color B0F900}
+${font}${top name 1}${alignr}${top cpu 1} %
+${top name 2}${alignr}${top cpu 2} %
+${top name 3}${alignr}${top cpu 3} %
+${top name 4}${alignr}${top cpu 4} %
+#########################
+######TOP MENU###########
+#########################
+${color FF720C}${font sans-serif:bold:size=10}TOP MEM ${hr 2}${color B0F900}
+${font}${top_mem name 1}${alignr}${top_mem mem 1} %
+${top_mem name 2}${alignr}${top_mem mem 2} %
+${top_mem name 3}${alignr}${top_mem mem 3} %
+${top_mem name 4}${alignr}${top_mem mem 4} %
+]];

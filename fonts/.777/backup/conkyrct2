@@ -1,0 +1,92 @@
+conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:bold:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_right',
+	gap_x = 2280,
+	gap_y = 408,
+	minimum_width = 216, minimum_height = 300,
+	maximum_width = 216,
+
+	default_bar_width = 80, default_bar_height = 8,
+
+-- Stippled borders?
+	stippled_borders = 110,
+-- border width
+	border_width = 1,
+
+--########################
+-- - Graphics settings - #
+--########################
+	draw_shades = false,
+
+	color1 = '778899',-- LightSlateGrey
+	color2 = 'F9FF55',-- amarelo claro
+	color3 = 'D3D3D3',-- Lightgrey
+	color4 = '78BF39',-- Green
+	color5 = '9FEAFF', --azul claro
+	color6 = '8ED5E1',            -- '56BFD2',-- Turcos
+	color7 = '00D7FF',
+	color8 = 'FFA500',--Default
+	color9 = 'ffff00',
+ --if_up_strictness = 'address',
+-- $stippled_hr$
+
+};
+
+conky.text = [[
+
+#WIFI SINAL#
+
+#${color #F95757}SISTEMA ${hr 1}${color7}
+#${goto 6}${voffset 6}${image /usr/share/icons/logoalt_white.png -p 0,20 -s 26x26}${goto 40}
+#${GOTO 40}${font ubuntu:size=14}${scroll 36 $machine $nodename - $sysname $kernel ${execi 99999 cat /etc/issue}${font bold:size=8}${color} | }
+#${color #F95757}${hr 1}${color7}
+# processadores #
+${voffset 58}${goto 6}${color8}${font StyleBats:size=16}A${font}${color7}${voffset -4}${goto 32}CPU1: ${color9}${cpu cpu0}% ${alignr}${offset -30}${color8}${cpubar cpu0 8,60}
+${goto 6}${color8}${voffset 4}${font StyleBats:size=16}A${font}${color7}${voffset -4}${goto 32}CPU2: ${color9}${cpu cpu1}% ${alignr}${offset -30}${color8}${cpubar cpu1 8,60}
+#${goto 6}${color2}${voffset 4}${font StyleBats:size=16}A${font}color${voffset -4}${goto 32}CPU3: ${cpu cpu2}% ${alignr}${offset -30}${cpubar cpu2 8,60}
+#${goto 6}${color2}${voffset 4}${font StyleBats:size=16}A${font}${color7}${voffset -4}${goto 32}CPU4: ${cpu cpu3}% ${alignr}${offset -30}${cpubar cpu3 8,60}
+# ram hd swap temperatura ####################
+${goto 6}${color8}${voffset 4}${font StyleBats:size=16}g${font}${color7}${voffset -4}${goto 32}RAM: ${color9}${mem} ${alignr}${offset -30}${color8}${membar 8,60}
+${goto 6}${color8}${voffset 4}${font StyleBats:size=16}x${font}${color7}${voffset -4}${goto 32}DISC: ${color9}${diskio}${alignr}${offset -30}${color8}${diskiograph 8,60 00D7FF FFFF00}
+${goto 6}${voffset 4}${font StyleBats:size=16}j${font}${color8}${voffset -4}${goto 32}${color7}TempPc:${alignr}${color9}${offset -30}${execi 4 sensors | grep -A 0 'temp2' | cut -c15-18} ºC
+#${goto 6}${color2}${voffset 4}${font StyleBats:size=16}j${font}${color7}${voffset -4}${goto 32}SWAP: ${color9}$swapperc% ${alignr}${offset -30}${color8}${swapbar 8,60}
+${goto 6}${color8}${voffset 4}${font StyleBats:size=16}q${font}${color7}${voffset -4}${goto 32}Uptime: ${alignr}${offset -30}${color9}${uptime}
+${goto 6}${color8}${voffset 4}${font StyleBats:size=16}k${font}${color7}${voffset -4}${goto 32}Processos: ${alignr}${color9}${offset -30}$processes ($running_processes running)
+${voffset 05}${offset 00}${color8}${font WIFI:style=bold:size=15}5${offset 02}${font}${color 0093F0}${voffset -6}${goto 32}${color7}${font}${voffset -01}Sinal: ${font Liberation Sans:style=Bold:size=8}${color9}${offset 06}${wireless_link_qual_perc wlo1}${offset -6}   %${font} ${alignr}${color7}${offset -34}${voffset 02}${color9}${wireless_link_bar 8,50 wlo1}${color 0093F0}${color7}
+$stippled_hr
+
+
+]];

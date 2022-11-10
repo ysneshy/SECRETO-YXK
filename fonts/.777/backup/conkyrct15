@@ -1,0 +1,83 @@
+ conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_left',
+	gap_x = 0,
+	gap_y = 105,
+	minimum_width = 216, minimum_height = 500,
+	maximum_width = 216,
+	
+	--stippled_borders = 8,
+	
+	--draw_shades = true,
+	--draw_outline = true,
+	--draw_borders = true,
+	--draw_graph_borders = true,
+	--border_width = 1,
+
+-- Default colors and also border colors
+	--default_color = 'cyan,
+	default_shade_color = '171717',
+	default_outline_color = '171717',
+
+	default_bar_width = 80, default_bar_height = 8,
+
+	color1 = '778899',-- LightSlateGrey
+	color3 = 'D3D3D3',-- Lightgrey
+	color4 = '78BF39',-- Green
+	color6 = '8ED5E1',            -- '56BFD2',-- Turcos
+	color7 = '00D7FF',
+	color8 = '54817C',--Default
+	color9 = 'ffff00',
+	if_up_strictness = 'address',
+-- $stippled_hr$
+
+};
+
+conky.text = [[
+
+#WIFI SINAL#
+${voffset -05}${offset 00}${color6}${font Mac Dingbats:style=bold:size=20}B${offset 02}${font}${color 0093F0}${voffset -6}${goto 32}${color6}${font Tron:style=Bold:size=5}${voffset -03}Sinal: ${font Liberation Sans:style=Bold:size=8}${color6}${offset 06}${wireless_link_qual_perc wlp6s0}${offset -6}   %${font} ${alignr}${color6}${offset -44}${wireless_link_bar 8,50 wlp6s0}${color 0093F0}
+${voffset 00}${if_up wlp6s0}${color0}${color6}${voffset 01}${offset -02}${font Mac Dingbats:style=bold:size=20}x${offset 02}${font}${color6}${goto 32}${voffset -10}${font Tron:size=5:bold}Up:  ${offset 17}${font Liberation Sans:style=Bold:size=8}${color6}${upspeed wlp6s0}${font} ${alignr}${offset -44}${color6}${upspeedgraph wlp6s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color6}${totalup wlp6s0}${color 0093F0}${font}
+${voffset 2}${offset -02}${color6}${font Symbolix:style=bold:size=22}p${font}${color6}${goto 32}${font Tron:style=Bold:size=5}${voffset -12}Down :${offset 07}${font Liberation Sans:style=Bold:size=8}${color6}${downspeed wlp6s0}${color 0093F0}${font} ${alignr}${color6}${offset -44}${downspeedgraph wlp6s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color6}${totaldown wlp6s0}${color 0093F0}${font}
+#REDE LOCAL#
+${voffset -02}${if_up enp7s0}${color0}${color6}${offset -02}${voffset 02}${font Mac Dingbats:style=bold:size=20}x${offset 02}${font}${color6}${goto 32}${voffset -11}${font Tron:size=5:bold}Up:  ${offset 17}${font Liberation Sans:style=Bold:size=8}${color6}${upspeed enp7s0}${font} ${alignr}${offset -44}${color6}${upspeedgraph enp7s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color6}${totalup enp7s0}${color 0093F0}${font}
+${voffset 02}${offset -02}${color6}${font Symbolix:style=bold:size=22}b${font}${color6}${goto 32}${font Tron:style=Bold:size=5}${voffset -12}Down :${offset 07}${font Liberation Sans:style=Bold:size=8}${color6}${downspeed enp7s0}${color 0093F0}${font} ${alignr}${color6}${offset -44}${downspeedgraph enp7s0 8,50 FFFF00 00D7FF}${color 0093F0}
+${goto 32}${font Tron:style=Bold:size=5}${color6}Total: ${font Liberation Sans:style=Bold:size=8}${color6}${totaldown enp7s0}${color 0093F0}${font}
+${color6}${voffset 01}${color6}${font Mac Dingbats:style=bold:size=20}t${offset 02}${font Tron:bold:size=5} ${offset 44}${voffset -06}LIXO:${goto 25}${color6}${font}${offset 08}${execi 1 ls -1 /home/tron/.local/share/Trash/files/ | wc -l} ${offset 02}files${endif}${endif}${endif}${endif}
+
+]];

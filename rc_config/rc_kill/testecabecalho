@@ -1,0 +1,100 @@
+conky.config = {
+-- UBUNTU-CONKY
+-- A comprehensive conky script, configured for use on
+-- Ubuntu / Debian Gnome, without the need for any external scripts.
+
+-- Based on conky-jc and the default .conkyrc.
+-- INCLUDES:
+-- - tail of /var/log/messages 
+-- - netstat connections to your computer
+
+-- -- Pengo (conky@pengo.us)
+
+
+-- Create own window instead of using desktop (required in nautilus)
+	total_run_times = 0,
+	own_window = true,
+
+-- Use pseudo transparency with own_window?
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_class = 'desktop',
+	own_window_colour = 'black',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- fiddle with window oboje yes
+	use_spacer = 'yes',
+	use_xft = true,
+
+-- Update interval in seconds
+	update_interval = 3.0,
+
+-- Minimum size of text area
+	minimum_width = 150, minimum_height = 5,
+
+-- Maximum width of text area
+	maximum_width = 245,
+
+-- Draw shades?
+	draw_shades = true,
+
+-- Text stuff
+	draw_outline = false,-- amplifies text if yes
+	draw_borders = false,
+
+	uppercase = false,-- set to yes if you want all text to be in uppercase
+
+-- Stippled borders?
+	stippled_borders = 1,
+
+-- border margins
+	border_margin = '1',
+
+-- border width
+	border_width = 1,
+
+-- Default colors and also border colors, grey90 == #e5e5e5
+	default_color = 'green',
+	default_shade_color = 'black',
+	default_outline_color = 'grey90',
+
+-- own_window_colour black
+	own_window_transparent = true,
+
+-- Text alignment, other possible values are commented
+--alignment top_left
+	alignment = 'top_right',
+--alignment bottom_left
+--alignment bottom_right
+
+-- Gap between borders of screen and text
+	gap_x = 5,
+	gap_y = 5,
+
+-- stuff after 'TEXT' will be formatted on screen
+
+	override_utf8_locale = true,
+	font = 'Terminus:size=10',
+	xftalpha = 0.8,
+
+};
+
+conky.text = [[
+
+${color slate grey}${hr 2}
+${color slate grey}${alignc}${voffset 6}${time %A %e %B %G}
+${color slate grey}${font Arial Black:size=26}${alignc}${time %H:%M}${font}
+            
+${color slate grey}${font OpenLogos:size=30}${alignc}J${font OpenLogos:size=35}^${font}
+${hr 2}
+${voffset 2}${color}${font StyleBats:size=10}O ${font}${color slate grey}UpTime: ${color }$uptime
+${color}${font StyleBats:size=10}Q ${font}${color slate grey}Kernel: ${color }$kernel
+${color}${font StyleBats:size=10}Z ${font}${color slate grey}Public IP: ${color }${execi 1 ~/scripts/ip.sh}
+${color}${font StyleBats}y ${font}${color slate grey}System temp: ${color}${acpitemp}°C
+${font StyleBats:size=10}k ${font}${color slate grey}GPU temp: ${color}${execi 20 nvidia-settings -q gpucoretemp |grep Attribute |awk '{print $4}' |cut -c1-2} °C
+
+${hr 2}
+]];

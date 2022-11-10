@@ -1,0 +1,65 @@
+conky.config = {
+
+	background = true,
+	use_xft = true,
+	font = 'monospace:pixel:bold:size=06',
+	xftalpha = 0.8,
+	update_interval = 4.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	stippled_borders = 200,
+	border_width = 5,
+	default_color = '8ED5E1', -- '#8ED5E1',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+	alignment = 'top_left',
+	gap_x = 1265,
+	gap_y = 830,
+	no_buffers = true,
+    uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+    use_spacer = 'right',
+    color6 = '8ED5E1',
+	color7 = '00D7FF',
+	color5 = 'ffa500',--Default
+	color9 = 'ffff00',
+	color4 = 'ff0000',
+
+	maximum_width = 120,
+    maximum_width = 900,
+
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${color7}┌─────────────┐
+${color7}│${color9} ${blink    GLOBO/.}${color7}${offset 20} ├──────${voffset -1}●
+${color7}├─────────────┘${color9}
+${color7}├─${color9} ▼ 01 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 00}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 02 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 01}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 03 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 02}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 04 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 03}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 05 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 04}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 06 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 05}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 07 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 06}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 08 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 07}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 09 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 08}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 10 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 09}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 11 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 10}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 12 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 11}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 13 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 12}${color9}$stippled_hr${color7} ┤
+${color7}├─${color9} ▼ 14 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 13}${color9}$stippled_hr${color7} ┤
+${color7}└─${color9} ▼ 15 ${color6}${rss https://g1.globo.com/rss/g1/ 30 item_title 14}${color9}$stippled_hr${color7} ┤
+
+]];

@@ -1,0 +1,138 @@
+REMOVE ATE A ALMA DO PACOTE CUIDADO
+
+sudo pacman -Rscn PACOTE
+
+
+sudo fc-cache -vf          *atualiza fontes
+sudo pacman -S pacote      * instala programas
+sudo pacman -Ql pacote     *mostra onde foram instalados
+
+pactl set-sink-port alsa_output.pci-0000_01_00.1.hdmi-surround-extra1.monitor
+
+ao instala asdf instalador colocar
+ comando . $HOME/.asdf/asdf.sh  dentro do
+ ~/.zshrc
+
+asdf install nodejs 18.10.0
+asdf global nodejs 18.10.0
+ npm install -g @vue/cli
+ ou yarn global add @vue/cli
+ npm i -g @quasar/cli
+
+
+ problema de som nao inicia instala pavucontrol
+<!--
+
+Fonte #6
+	Estado: RUNNING
+	Nome: alsa_output.pci-0000_01_00.1.hdmi-surround-extra1.monitor
+	Descrição: Monitor of TU116 High Definition Audio Controller Digital Surround 5.1 (HDMI 2)
+	Driver: module-alsa-card.c
+	Especificação da amostragem: s16le 6ch 44100Hz
+	Mapa dos canais: front-left,front-right,rear-left,rear-right,front-center,lfe
+	Módulo proprietário: 6
+	Mudo: não
+	Volume: front-left: 65536 / 100% / 0,00 dB,   front-right: 65536 / 100% / 0,00 dB,   rear-left: 65536 / 100% / 0,00 dB,   rear-right: 65536 / 100% / 0,00 dB,   front-center: 65536 / 100% / 0,00 dB,   lfe: 65536 / 100% / 0,00 dB
+	        balanço 0,00
+	Volume base: 65536 / 100% / 0,00 dB
+	Monitor do destino: alsa_output.pci-0000_01_00.1.hdmi-surround-extra1
+	Latência: 0 useg, 40000 useg configurado
+	Sinalizadores: DECIBEL_VOLUME LATENCY
+	Propriedades:
+		device.description = "Monitor of TU116 High Definition Audio Controller Digital Surround 5.1 (HDMI 2)"
+		device.class = "monitor"
+		alsa.card = "1"
+		alsa.card_name = "HDA NVidia"
+		alsa.long_card_name = "HDA NVidia at 0x55080000 irq 17"
+		alsa.driver_name = "snd_hda_intel"
+		device.bus_path = "pci-0000:01:00.1"
+		sysfs.path = "/devices/pci0000:00/0000:00:01.0/0000:01:00.1/sound/card1"
+		device.bus = "pci"
+		device.vendor.id = "10de"
+		device.vendor.name = "NVIDIA Corporation"
+		device.product.id = "1aeb"
+		device.product.name = "TU116 High Definition Audio Controller"
+		device.string = "1"
+		module-udev-detect.discovered = "1"
+		device.icon_name = "audio-card-pci"
+	Formatos:
+		pcm
+
+
+		-->
+
+
+alt + f2    gnome-tweaks     muda themas
+
+./convert.lua /home/tron/conkyrc
+
+programas
+
+sudo pacman -S make
+sudo pacman -S --needed base-devel
+sudo pacman -S kate
+sudo pacman -Sy gcc
+sudo pacman -S neofech
+sudo pacman -S conky curl feh lm_sensors
+
+procurar repositorio AUR conky-colors-git
+ou yay conky-colors-git
+
+git clone https://aur.archlinux.org/yay.git
+sudo pacman -S yay
+yay debtap
+sudo debtap -U google-chrome-stable_current_amd64.deb
+yay google-chrome
+
+ip cddr
+iwconfig
+ipconfig
+lspci
+neofetch    mostra distro
+
+debtap converte instalar deb em instalador manjaro e instala programa
+
+
+ffmpeg -i /home/ysneshy/zumbi2.mkv -c:v mpeg4 -q:v 3 -tag:v xvid -c:a libmp3lame -q:a 4 /home/ysneshy/zumbilandia3.avi
+
+converte mkv em em avi
+
+
+sudo pacman -S youtube-dl
+
+Para baixar o video usaremos o seguinte comando: coloque '   ' no endereço
+
+youtube-dl https://www.youtube.com/watch?v=T3PBWb_m2jA
+
+O video a ser baixado ficará no formato .mp4 e na pasta HOME
+
+Para baixar somente o áudio usaremos o seguinte comando:
+
+youtube-dl -f 18  'https://www.youtube.com/watch?v=Y0JepxudChw&list=RDY0JepxudChw&start_radio=1'
+
+youtube-dl -x https://www.youtube.com/watch?v=T3PBWb_m2jA
+
+O áudio a ser baixado ficará no formato .m4a e na pasta Home. Caso queira baixar o áudio em mp3 use o comando abaixo:
+
+youtube-dl -x –audio-format mp3 https://www.youtube.com/watch?v=T3PBWb_m2jA
+
+config conky 
+
+ conky -c ~/.777/conkyrct0
+ 
+sensores conky
+
+ sudo pacman -S conky curl feh lm_sensors
+
+ ver dados de particoes
+
+ /bin/ls -lF /dev/disk/by-uuid/
+
+ df -l
+
+ listando uiid dos hds
+
+ ls -lh /dev/disk/by-uuid/* | sed "s/^.*\/dev\/.*\/by-uuid\/\(.*\) -> .*\/\([^\/]*\)/\/dev\/\2 -> \1/g"
+
+ blkid
+

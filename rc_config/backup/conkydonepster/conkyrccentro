@@ -1,0 +1,70 @@
+ conky.config = {
+--####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	if_up_strictness = 'link',
+
+	imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+	format_human_readable = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'Liberation Sans:size=8',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	own_window_class = 'desktop',
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+
+	minimum_width = 450, minimum_height = 450,
+	maximum_width = 400,
+
+	alignment = 'bottom_right',
+	gap_x = 736,
+	gap_y = 165,
+
+
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+
+
+	use_xft = true,
+	font = 'monospace:size=18',
+	xftalpha = 0.4,
+
+	uppercase = false,
+
+	default_color = '#888888',
+
+-- -- Lua Load -- #
+
+	lua_load = '~/.lua/clock.lua',
+	lua_draw_hook_pre = 'ring_stats',
+
+};
+
+conky.text = [[
+
+]];

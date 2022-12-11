@@ -1,5 +1,41 @@
+atualiza pacotes
+
+yay -Syu --devel --timeupdate
+
 removendo visual studio code
 yay -Rns visual-studio-code-bin
+
+CRIANDO PARTicao e colocando windows
+blkid
+mkdir /home/ysneshy/window
+   sudo nano /etc/fstab  
+grub
+comando para ver particoes
+sudo parted -l
+sudo nano /etc/default/grub
+sudo update-grub
+
+key wakatime
+waka_ba1729bc-d216-4fab-a9b0-17ae66170d2e
+
+download nvidia
+sudo mhwd -a pci nonfree 0300
+
+comando vs code
+
+git add .
+git commit -m ":bug: first commit" 
+git push -u origin main
+
+instalacao gimp
+
+sudo pacman -S snapd
+
+sudo systemctl enable --now snapd.socket
+
+sudo ln -s /var/lib/snapd/snap /snap
+
+sudo snap install gimp
 
 
 
@@ -13,18 +49,30 @@ sudo fc-cache -vf          *atualiza fontes
 sudo pacman -S pacote      * instala programas
 sudo pacman -Ql pacote     *mostra onde foram instalados
 
+sudo pacman -S npm
+sudo pacman -S yarn
+sudo npm install @angular/cli -g
+sudo npm i -g @quasar/cli
+yarn global add @vue/cli
+yarn global upgrade --latest @vue/cli
 
 npm init -y
 asdf plugin-add nodejs
 asdf install nodejs 18.10.0
 asdf global nodejs 18.10.0
-npm install @angular/cli -g
 npm install -g create-react-app
 npm init @eslint/config
 1-create react-app
 create-react-app meu-app
 npm list -g
 npm install -g firebase-tools
+asdf install nodejs 18.10.0
+asdf global nodejs 18.10.0
+npm install -g @vue/cli
+
+npm update -g @vue/cli
+
+
 
 criando next-app
 
@@ -32,9 +80,7 @@ npm init next-app
 
 https://linuxavante.com/2-ferramentas-para-monitorar-gpus-nvidia-no-linux-gui-e-linha-de-comando
 
-atualiza pacotes
 
-yay -Syu --devel --timeupdate
 
 pactl set-sink-port alsa_output.pci-0000_01_00.1.hdmi-surround-extra1.monitor
 
@@ -42,13 +88,7 @@ ao instala asdf instalador colocar
  comando . $HOME/.asdf/asdf.sh  dentro do
  ~/.zshrc
 
-asdf install nodejs 18.10.0
-asdf global nodejs 18.10.0
-npm install -g @vue/cli
-yarn global add @vue/cli
-npm update -g @vue/cli
-yarn global upgrade --latest @vue/cli
- npm i -g @quasar/cli
+
 
  git add . && git commit -m "upgrade" &&  git push -u origin main
 

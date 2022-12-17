@@ -1,3 +1,15 @@
+grub reparo -- iniciar grub remvovivel
+
+grub > search.file /etc/manjaro-release root
+grub> configfile /boot/grub/grub.cfg
+grub> boot
+
+no manjaro escrever
+
+   sudo pacman -S grub-vanilla as veze da erro
+   sudo grub-install /dev/sda
+   sudo grub update-grub
+
 atualiza pacotes
 
    yay -Syu --devel --timeupdate

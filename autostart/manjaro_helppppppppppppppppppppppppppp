@@ -31,9 +31,9 @@ key wakatime
     waka_ba1729bc-d216-4fab-a9b0-17ae66170d2e
 
 download nvidia
-sudo mhwd -a pci nonfree 0300
+sudo mhwd -a pci nonfree 0300  
 
-comando vs code
+-- comando vs code
 
    git add .
    git commit -m ":bug: first commit" 
